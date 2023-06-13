@@ -17,13 +17,22 @@ public class MainActivity extends AppCompatActivity {
 
     // Cria uma lista para armazenar os usuários
     private static List<Usuario> usuarios = new ArrayList<>();
+    private static List<Servico> servicos = new ArrayList<>();
 
     public static List<Usuario> getUsuarios() {
         return usuarios;
     }
 
+    public static List<Servico> getServicos() {
+        return servicos;
+    }
+
     public static void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
+    }
+
+    public static void adicionarServico(Servico servico) {
+        servicos.add(servico);
     }
 
     @Override
@@ -35,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         usuarios = new ArrayList<>();
         // Popula a lista com os usuários desejados
         popularUsuarios();
+        popularServicos();
 
         EditText txtEmail = findViewById(R.id.txtEmail);
         EditText txtSenha = findViewById(R.id.txtSenha);
@@ -90,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     // Método para popular a lista de usuários com exemplos
     private void popularUsuarios() {
         usuarios.add(new Usuario("João", "123456789", "joao@exemplo.com", "cliente", "senha1"));
@@ -112,5 +123,28 @@ public class MainActivity extends AppCompatActivity {
         usuarios.add(new Usuario("Amanda", "852147369", "amanda@exemplo.com", "cliente", "senha18"));
         usuarios.add(new Usuario("Thiago", "147369852", "thiago@exemplo.com", "cliente", "senha19"));
         usuarios.add(new Usuario("Gabriela", "741963852", "gabriela@exemplo.com", "cliente", "senha20"));
+    }
+
+    // Método para popular a lista de serviços com exemplos
+    private void popularServicos() {
+        servicos.add(new Servico("Corte de Cabelo", "Corte moderno e estilizado.", 20.0, 30.0, 30));
+        servicos.add(new Servico("Barba", "Barba bem aparada e cuidada.", 15.0, 25.0, 20));
+        servicos.add(new Servico("Sobrancelha", "Design de sobrancelha masculina.", 10.0, 15.0, 15));
+        servicos.add(new Servico("Massagem", "Massagem relaxante para aliviar o estresse.", 40.0, 60.0, 60));
+        servicos.add(new Servico("Limpeza de Pele", "Tratamento facial para limpar a pele.", 30.0, 45.0, 45));
+        servicos.add(new Servico("Corte com Navalha", "Corte de cabelo feito com navalha.", 25.0, 35.0, 40));
+        servicos.add(new Servico("Tintura de Barba", "Coloração da barba para um visual diferente.", 20.0, 30.0, 30));
+        servicos.add(new Servico("Hidratação Capilar", "Tratamento para hidratar e fortalecer os cabelos.", 30.0, 45.0, 45));
+        servicos.add(new Servico("Depilação", "Remoção de pelos indesejados.", 25.0, 35.0, 40));
+        servicos.add(new Servico("Design de Sobrancelha", "Modelagem de sobrancelhas masculinas.", 10.0, 15.0, 15));
+        servicos.add(new Servico("Corte Infantil", "Corte de cabelo para crianças.", 15.0, 25.0, 20));
+        servicos.add(new Servico("Relaxamento Capilar", "Tratamento para relaxar e alisar os cabelos.", 40.0, 60.0, 60));
+        servicos.add(new Servico("Pedicure", "Tratamento estético para os pés masculinos.", 20.0, 30.0, 30));
+        servicos.add(new Servico("Manicure", "Tratamento estético para as unhas masculinas.", 15.0, 25.0, 20));
+        servicos.add(new Servico("Tintura de Cabelo", "Coloração dos cabelos para um visual diferente.", 30.0, 45.0, 45));
+        servicos.add(new Servico("Alinhamento de Barba", "Alinhamento e desenho da barba.", 20.0, 30.0, 30));
+        servicos.add(new Servico("Massagem Capilar", "Massagem no couro cabeludo para relaxamento.", 25.0, 35.0, 40));
+        servicos.add(new Servico("Limpeza de Orelhas", "Limpeza e cuidados com as orelhas.", 10.0, 15.0, 15));
+        servicos.add(new Servico("Alisamento de Barba", "Alisamento dos pelos da barba.", 25.0, 35.0, 40));
     }
 }
