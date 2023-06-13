@@ -31,25 +31,21 @@
         android:layout_width="58dp"
         android:layout_height="55dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="30dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toStartOf="@+id/txtTituloCortes"
-        app:layout_constraintHorizontal_bias="0.682"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="28dp"
         android:rotation="-174"
         android:rotationY="170"
         android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toEndOf="@+id/txtTituloCortes"
         app:layout_constraintTop_toTopOf="parent" />
 

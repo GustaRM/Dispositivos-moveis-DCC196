@@ -11,28 +11,26 @@
         android:id="@+id/txtTituloMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
         android:text="Menu"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="156dp" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="36dp"
         android:rotation="-174"
         android:rotationY="170"
         android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/txtTituloMenu"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -52,13 +50,11 @@
         android:id="@+id/imageView"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toStartOf="@+id/txtTituloMenu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
