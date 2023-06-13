@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".Menu_cliente">
+    tools:context=".Menu_gestor">
 
     <TextView
         android:id="@+id/txtTituloMenu"
@@ -62,12 +62,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnHorario"
+        android:id="@+id/btnServicos"
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:layout_marginTop="120dp"
         android:fontFamily="@font/archivo_black"
-        android:text="Meus Horários"
+        android:text="Serviços"
         android:textSize="16sp"
         app:backgroundTint="#3351BC"
         app:cornerRadius="10px"
@@ -77,34 +77,19 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTituloMenu" />
 
     <Button
-        android:id="@+id/btnBarba"
+        android:id="@+id/btnRelatorios"
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/archivo_black"
-        android:text="Barba"
+        android:text="Relatórios"
         android:textSize="16sp"
         app:backgroundTint="#3351BC"
         app:cornerRadius="10px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCortes" />
-
-    <Button
-        android:id="@+id/btnOutros"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Outros Serviços"
-        android:textSize="16sp"
-        app:backgroundTint="#3351BC"
-        app:cornerRadius="10px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBarba" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProfissionais" />
 
     <Button
         android:id="@+id/btnSair"
@@ -122,22 +107,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBarba"
+        app:layout_constraintTop_toBottomOf="@+id/btnRelatorios"
         app:layout_constraintVertical_bias="0.272" />
 
     <Button
-        android:id="@+id/btnCortes"
+        android:id="@+id/btnProfissionais"
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/archivo_black"
-        android:text="Cortes de Cabelo"
+        android:text="Profissionais"
         android:textSize="16sp"
         app:backgroundTint="#3351BC"
         app:cornerRadius="10px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHorario" />
+        app:layout_constraintTop_toBottomOf="@+id/btnServicos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
