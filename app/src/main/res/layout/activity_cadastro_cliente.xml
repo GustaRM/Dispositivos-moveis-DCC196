@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".Menu_gestor">
+    tools:context=".Cadastro_cliente">
 
     <TextView
         android:id="@+id/txtTituloMenu"
@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
-        android:text="Menu"
+        android:text="Cadastro"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -61,68 +61,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnServicos"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Serviços"
-        android:textSize="16sp"
-        app:backgroundTint="#3351BC"
-        app:cornerRadius="10px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
+
+    <EditText
+        android:id="@+id/txtNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Nome"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloMenu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloMenu" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <EditText
+        android:id="@+id/txtTelefone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Telefone (formato: (99)9999-9999)"
+        app:layout_constraintTop_toBottomOf="@id/txtNome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        app:layout_constraintTop_toBottomOf="@id/txtTelefone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <EditText
+        android:id="@+id/txtSenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"
+        android:hint="Senha"
+        app:layout_constraintTop_toBottomOf="@id/txtEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <EditText
+        android:id="@+id/txtConfirmaSenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"
+        android:hint="Confirme a Senha"
+        app:layout_constraintTop_toBottomOf="@id/txtSenha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
 
     <Button
-        android:id="@+id/btnRelatorios"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Relatórios"
-        android:textSize="16sp"
-        app:backgroundTint="#3351BC"
-        app:cornerRadius="10px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        android:id="@+id/btnConcluir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Concluir"
+        app:layout_constraintTop_toBottomOf="@id/txtConfirmaSenha"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfissionais" />
-
-    <Button
-        android:id="@+id/btnSair"
-        android:layout_width="87dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Sair"
-        android:textSize="16sp"
-        app:backgroundTint="#3351BC"
-        app:cornerRadius="10px"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRelatorios"
-        app:layout_constraintVertical_bias="0.272" />
-
-    <Button
-        android:id="@+id/btnProfissionais"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Profissionais"
-        android:textSize="16sp"
-        app:backgroundTint="#3351BC"
-        app:cornerRadius="10px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnServicos" />
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
