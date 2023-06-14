@@ -1,6 +1,7 @@
 package com.example.ibarba;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
         Usuario usuario = getItem(position);
         if (usuario != null) {
             TextView textView = convertView.findViewById(android.R.id.text1);
+            textView.setTextColor(Color.WHITE);
             textView.setText(usuario.getNome());
         }
 
