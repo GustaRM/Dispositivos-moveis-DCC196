@@ -53,7 +53,6 @@ public class Cadastro_profissional extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
     @Override
     protected void onResume() {
