@@ -17,6 +17,7 @@ public class Menu_gestor extends AppCompatActivity {
 
         Button btnServicos = findViewById(R.id.btnServicos);
         Button btnProfissionais = findViewById(R.id.btnProfissionais);
+        Button btnRelatorios = findViewById(R.id.btnRelatorios);
 
         btnServicos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,15 @@ public class Menu_gestor extends AppCompatActivity {
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de profissionais.
                 Intent intent = new Intent(Menu_gestor.this, Cadastro_profissional.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRelatorios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Redirecionar para o menu de relatorios.
+                Intent intent = new Intent(Menu_gestor.this, Menu_relatorio.class);
                 startActivity(intent);
             }
         });
