@@ -1,14 +1,19 @@
 package com.example.ibarba;
 
+import java.util.UUID;
+
 public class Usuario {
+
+    private String ID;
     private String nome;
     private String telefone;
     private String email;
-    private String tipoUsuario;
+    private String tipoUsuario; //cliente, profissional ou gestor
     private String senha;
 
     // Construtor
     public Usuario(String nome, String telefone, String email, String tipoUsuario, String senha) {
+        this.ID = UUID.randomUUID().toString();
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -17,6 +22,10 @@ public class Usuario {
     }
 
     // Getters e Setters
+
+    public String getID() {
+        return ID;
+    }
     public String getNome() {
         return nome;
     }

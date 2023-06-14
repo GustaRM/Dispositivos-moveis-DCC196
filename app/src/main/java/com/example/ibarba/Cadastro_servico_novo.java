@@ -47,10 +47,10 @@ public class Cadastro_servico_novo extends AppCompatActivity {
                 double precoFinal = Double.parseDouble(txtPrecoFinal.getText().toString());
                 int duracao = Integer.parseInt(txtDuracao.getText().toString());
 
-                // Criar um novo usuário com os dados fornecidos
+                // Criar um novo serviço com os dados fornecidos
                 Servico novoServico = new Servico(nome, descricao, custo, precoFinal, duracao);
 
-                // Adicionar o novo usuário à lista existente na MainActivity
+                // Adicionar o novo serviço à lista existente na MainActivity
                 MainActivity.adicionarServico(novoServico);
 
                 // Exibir mensagem de sucesso

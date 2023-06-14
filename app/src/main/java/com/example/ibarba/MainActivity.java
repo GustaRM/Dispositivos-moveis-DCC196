@@ -147,4 +147,16 @@ public class MainActivity extends AppCompatActivity {
         servicos.add(new Servico("Limpeza de Orelhas", "Limpeza e cuidados com as orelhas.", 10.0, 15.0, 15));
         servicos.add(new Servico("Alisamento de Barba", "Alisamento dos pelos da barba.", 25.0, 35.0, 40));
     }
+
+    public static List<Usuario> getProfissionais() {
+
+        List<Usuario> profissionais = new ArrayList<>();
+
+        for (Usuario usuario : usuarios) {
+            if (usuario.getTipoUsuario().equals("profissional")) {
+                profissionais.add(usuario);
+            }
+        }
+        return profissionais;
+    }
 }

@@ -1,6 +1,10 @@
 package com.example.ibarba;
 
+import java.util.UUID;
+
 public class Servico {
+
+    private String ID;
     private String nome;
     private String descricao;
     private double custo;
@@ -8,6 +12,7 @@ public class Servico {
     private int duracao;
 
     public Servico(String nome, String descricao, double custo, double precoFinal, int duracao) {
+        this.ID = UUID.randomUUID().toString();
         this.nome = nome;
         this.descricao = descricao;
         this.custo = custo;
@@ -17,6 +22,9 @@ public class Servico {
 
     // Getters e Setters
 
+    public String getID() {
+        return ID;
+    }
     public String getNome() {
         return nome;
     }
