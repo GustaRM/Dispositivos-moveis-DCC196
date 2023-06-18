@@ -15,9 +15,8 @@ public class Menu_cliente extends AppCompatActivity {
         setContentView(R.layout.activity_menu_cliente);
 
         Button btnHorario = findViewById(R.id.btnHorario);
-        Button btnCortes = findViewById(R.id.btnCortes);
-        Button btnBarba = findViewById(R.id.btnBarba);
-        Button btnOutros = findViewById(R.id.btnOutros);
+        Button btnAgendar = findViewById(R.id.btnAgendar);
+        Button btnPrecos = findViewById(R.id.btnPrecos);
 
         btnHorario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,32 +27,23 @@ public class Menu_cliente extends AppCompatActivity {
             }
         });
 
-        btnCortes.setOnClickListener(new View.OnClickListener() {
+        btnAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(Menu_cliente.this, Cortes.class);
+                Intent intent = new Intent(Menu_cliente.this, AgendarServico.class);
                 startActivity(intent);
             }
         });
 
-        btnBarba.setOnClickListener(new View.OnClickListener() {
+        btnPrecos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(Menu_cliente.this, Cortes.class);
+                Intent intent = new Intent(Menu_cliente.this, Precos.class);
                 startActivity(intent);
             }
         });
 
-
-        btnOutros.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(Menu_cliente.this, Cortes.class);
-                startActivity(intent);
-            }
-        });
     }
 }

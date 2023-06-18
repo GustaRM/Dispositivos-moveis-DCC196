@@ -8,7 +8,7 @@
     tools:context=".Cadastro_profissional">
 
     <TextView
-        android:id="@+id/txtTituloMenu"
+        android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -45,7 +45,7 @@
         android:layout_marginEnd="30dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toStartOf="@+id/txtTituloMenu"
+        app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btnNovo"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloMenu"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo"
         tools:layout_editor_absoluteX="0dp">
 
 
