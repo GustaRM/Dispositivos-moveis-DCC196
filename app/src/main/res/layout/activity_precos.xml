@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnVoltar"
+            android:id="@+id/btnSair"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"

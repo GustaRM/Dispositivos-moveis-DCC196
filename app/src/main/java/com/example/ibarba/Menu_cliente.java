@@ -46,7 +46,7 @@ public class Menu_cliente extends AppCompatActivity {
         });
 
         //Voltar para a tela de Login
-        Button btnSair = findViewById((R.id.btnVoltar));
+        Button btnSair = findViewById((R.id.btnSair));
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

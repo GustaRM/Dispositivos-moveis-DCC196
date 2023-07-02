@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Menu_gestor extends AppCompatActivity {
 
@@ -42,6 +41,16 @@ public class Menu_gestor extends AppCompatActivity {
             public void onClick(View v) {
                 // Redirecionar para o menu de relatorios.
                 Intent intent = new Intent(Menu_gestor.this, Menu_relatorio.class);
+                startActivity(intent);
+            }
+        });
+
+        //Voltar para o menu inicial (Cliente)
+        Button btnSair = findViewById((R.id.btnSair));
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu_gestor.this, MainActivity.class);
                 startActivity(intent);
             }
         });

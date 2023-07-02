@@ -54,7 +54,7 @@ public class Cadastro_servico extends AppCompatActivity {
         });
 
         //Voltar para o menu inicial (Gestor)
-        Button btnVoltar = findViewById((R.id.btnVoltar));
+        Button btnVoltar = findViewById((R.id.btnSair));
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -50,7 +50,7 @@
 
 
     <Button
-        android:id="@+id/btnVoltar"
+        android:id="@+id/btnSair"
         android:layout_width="127dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
