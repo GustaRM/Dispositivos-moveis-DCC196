@@ -59,12 +59,26 @@
         app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Voltar"
+        app:backgroundTint="#3351BC"
+        app:cornerRadius="10px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.674"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:layout_width="410dp"
         android:layout_height="385dp"
+        android:background="#000000"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnNovo"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
@@ -73,7 +87,10 @@
         <ListView
             android:id="@+id/listViewServicos"
             android:layout_width="match_parent"
-            android:layout_height="304dp" />
+            android:layout_height="304dp"
+            android:background="#000000"
+            android:cacheColorHint="#FFFFFF"
+            android:listSelector="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

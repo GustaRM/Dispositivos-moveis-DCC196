@@ -45,5 +45,15 @@ public class Menu_cliente extends AppCompatActivity {
             }
         });
 
+        //Voltar para a tela de Login
+        Button btnSair = findViewById((R.id.btnVoltar));
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu_cliente.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

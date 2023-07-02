@@ -2,10 +2,12 @@ package com.example.ibarba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,16 @@ public class Meus_Horarios extends AppCompatActivity {
         ArrayList<String> agendamentos = preencherAgendamentos();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, agendamentos);
         lista.setAdapter(arrayAdapter);
+
+        //Voltar para o menu inicial (Cliente)
+        Button btnVoltar = findViewById((R.id.btnVoltar));
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Meus_Horarios.this, Menu_cliente.class);
+                startActivity(intent);
+            }
+        });
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

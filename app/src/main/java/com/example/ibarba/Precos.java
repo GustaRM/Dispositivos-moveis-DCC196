@@ -2,8 +2,11 @@ package com.example.ibarba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,6 +22,16 @@ public class Precos extends AppCompatActivity {
         ArrayList<String> precos = preencherPrecos();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, precos);
         lista.setAdapter(arrayAdapter);
+
+        //Voltar para o menu inicial (Cliente)
+        Button btnVoltar = findViewById((R.id.btnVoltar));
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Precos.this, Menu_cliente.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private ArrayList<String> preencherPrecos() {
@@ -34,5 +47,7 @@ public class Precos extends AppCompatActivity {
 
         return precos;
     }
+
+
 
 }
