@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Menu_gestor extends AppCompatActivity {
 
@@ -15,8 +14,8 @@ public class Menu_gestor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_gestor);
 
-        Button btnServicos = findViewById(R.id.btnServicos);
-        Button btnProfissionais = findViewById(R.id.btnProfissionais);
+        Button btnServicos = findViewById(R.id.btnHorarios);
+        Button btnProfissionais = findViewById(R.id.btnAtendimentos);
         Button btnRelatorios = findViewById(R.id.btnRelatorios);
 
         btnServicos.setOnClickListener(new View.OnClickListener() {

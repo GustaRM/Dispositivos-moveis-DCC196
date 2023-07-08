@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else if (usuarioEncontrado.getTipoUsuario().equals("profissional")) {
                         // Redirecionar para a tela "Bem vindo profissional"
-                        Intent intent = new Intent(MainActivity.this, Menu_gestor.class);
+                        Intent intent = new Intent(MainActivity.this, Menu_profissional.class);
                         startActivity(intent);
                     } else if (usuarioEncontrado.getTipoUsuario().equals("gestor")) {
                         // Redirecionar para a tela "Bem vindo gestor"
