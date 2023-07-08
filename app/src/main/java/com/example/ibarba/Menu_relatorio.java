@@ -2,8 +2,11 @@ package com.example.ibarba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -52,5 +55,15 @@ public class Menu_relatorio extends AppCompatActivity {
 
         // Atribui o adaptador para o Spinner
         spinnerTipoRelatorio.setAdapter(adapterTipoRelatorio);
+
+        //Voltar para o menu inicial (Gestor)
+        Button btnVoltar = findViewById((R.id.btnSair));
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu_relatorio.this, Menu_gestor.class);
+                startActivity(intent);
+            }
+        });
     }
 }

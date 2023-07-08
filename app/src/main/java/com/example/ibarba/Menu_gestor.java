@@ -45,5 +45,15 @@ public class Menu_gestor extends AppCompatActivity {
             }
         });
 
+        //Voltar para o menu inicial (Cliente)
+        Button btnSair = findViewById((R.id.btnSair));
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu_gestor.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

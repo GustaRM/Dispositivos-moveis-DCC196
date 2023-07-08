@@ -8,53 +8,45 @@
     tools:context=".Menu_relatorio">
 
     <TextView
-        android:id="@+id/txtTituloMenu"
+        android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
-        android:text="Relatorio"
+        android:text="Relatórios"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="110dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="58dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
-        android:rotation="-174"
-        android:rotationY="170"
-        android:src="@drawable/pngwing_com"
-        app:layout_constraintStart_toEndOf="@+id/txtTituloMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView2"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="660dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="30dp"
+        android:rotation="-170"
+        android:src="@drawable/pngwing_com"
+        app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="52dp"
         android:rotation="-174"
         android:rotationY="170"
         android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="58dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="30dp"
-        android:rotation="-170"
-        android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toStartOf="@+id/txtTituloMenu"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -68,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
     <Spinner
         android:id="@+id/spinnerMes"
@@ -113,16 +105,27 @@
         android:id="@+id/btnConcluir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Concluir"
         app:backgroundTint="#3351BC"
         app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-
-
+    <Button
+        android:id="@+id/btnSair"
+        android:layout_width="97dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
+        android:text="Voltar"
+        app:backgroundTint="#3351BC"
+        app:cornerRadius="10px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

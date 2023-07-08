@@ -52,6 +52,16 @@ public class Cadastro_servico extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Voltar para o menu inicial (Gestor)
+        Button btnVoltar = findViewById((R.id.btnSair));
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cadastro_servico.this, Menu_gestor.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

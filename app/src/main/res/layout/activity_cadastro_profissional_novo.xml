@@ -8,57 +8,45 @@
     tools:context=".Cadastro_profissional_editar">
 
     <TextView
-        android:id="@+id/txtTituloMenu"
+        android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
         android:text="Profissional"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="58dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:rotation="-174"
-        android:rotationY="170"
-        android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView2"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="660dp"
-        android:rotation="-174"
-        android:rotationY="170"
-        android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="58dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="30dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
-        app:layout_constraintEnd_toStartOf="@+id/txtTituloMenu"
+        app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="52dp"
+        android:rotation="-174"
+        android:rotationY="170"
+        android:src="@drawable/pngwing_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -72,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
     <EditText
         android:id="@+id/txtNome"
@@ -80,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Nome"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Telefone (formato: (99)9999-9999)"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +119,7 @@
         android:layout_marginTop="8dp"
         android:inputType="textEmailAddress"
         android:hint="Email"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,6 +147,7 @@
         android:layout_marginEnd="32dp"
         android:enabled="false"
         android:hint="cliente, profissional o gestor."
+        android:textColor="#FFFFFF"
         android:inputType="textEmailAddress"
         android:text="profissional"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,6 +173,7 @@
         android:layout_marginTop="8dp"
         android:inputType="textPassword"
         android:hint="Senha"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -206,6 +199,7 @@
         android:layout_marginTop="8dp"
         android:inputType="textPassword"
         android:hint="Confirme a Senha"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
