@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
                     // Usuário válido, redirecione para a tela apropriada com base no tipo de usuário
                     if (usuarioEncontrado.getTipoUsuario().equals("cliente")) {
                         // Redirecionar para a tela "Bem vindo cliente"
-                        Intent intent = new Intent(MainActivity.this, Menu_cliente.class);
+                        Intent intent = new Intent(MainActivity.this, tela_Menu_cliente.class);
                         startActivity(intent);
                     } else if (usuarioEncontrado.getTipoUsuario().equals("profissional")) {
                         // Redirecionar para a tela "Bem vindo profissional"
-                        Intent intent = new Intent(MainActivity.this, Menu_profissional.class);
+                        Intent intent = new Intent(MainActivity.this, tela_Menu_profissional.class);
                         startActivity(intent);
                     } else if (usuarioEncontrado.getTipoUsuario().equals("gestor")) {
                         // Redirecionar para a tela "Bem vindo gestor"
-                        Intent intent = new Intent(MainActivity.this, Menu_gestor.class);
+                        Intent intent = new Intent(MainActivity.this, tela_Menu_gestor.class);
                         startActivity(intent);
                     }
                 } else {
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro
-                Intent intent = new Intent(MainActivity.this, Cadastro_cliente.class);
+                Intent intent = new Intent(MainActivity.this, tela_Cadastro_cliente.class);
                 startActivity(intent);
             }
         });

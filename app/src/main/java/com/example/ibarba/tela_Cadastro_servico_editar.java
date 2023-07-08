@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Cadastro_servico_editar extends AppCompatActivity {
+public class tela_Cadastro_servico_editar extends AppCompatActivity {
 
     private EditText txtNome;
     private EditText txtDescricao;
@@ -75,7 +75,7 @@ public class Cadastro_servico_editar extends AppCompatActivity {
                 servico.setPrecoFinal(precoFinal);
                 servico.setDuracao(duracao);
 
-                Toast.makeText(Cadastro_servico_editar.this, "Serviço alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(tela_Cadastro_servico_editar.this, "Serviço alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();
@@ -91,7 +91,7 @@ public class Cadastro_servico_editar extends AppCompatActivity {
 
                 MainActivity.getServicos().remove(numeroServico);
 
-                Toast.makeText(Cadastro_servico_editar.this, "Serviço excluído com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(tela_Cadastro_servico_editar.this, "Serviço excluído com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();

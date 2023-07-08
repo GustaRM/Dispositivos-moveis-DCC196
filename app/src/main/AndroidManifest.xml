@@ -13,49 +13,49 @@
         android:theme="@style/Theme.IBarba"
         tools:targetApi="31">
         <activity
-            android:name=".Horarios_profissional"
+            android:name=".tela_Horarios_profissional"
             android:exported="false" />
         <activity
-            android:name=".Menu_profissional"
+            android:name=".tela_Menu_profissional"
             android:exported="false" />
         <activity
-            android:name=".Menu_relatorio"
+            android:name=".tela_Menu_relatorio"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_profissional_novo"
+            android:name=".tela_Cadastro_profissional_novo"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_profissional_editar"
+            android:name=".tela_Cadastro_profissional_editar"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_profissional"
+            android:name=".tela_Cadastro_profissional"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_servico_novo"
+            android:name=".tela_Cadastro_servico_novo"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_servico_editar"
+            android:name=".tela_Cadastro_servico_editar"
             android:exported="false" />
         <activity
             android:name=".Em_construcao"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_servico"
+            android:name=".tela_Cadastro_servico"
             android:exported="false" />
         <activity
-            android:name=".Cadastro_cliente"
+            android:name=".tela_Cadastro_cliente"
             android:exported="false" />
         <activity
-            android:name=".Menu_gestor"
+            android:name=".tela_Menu_gestor"
             android:exported="false" />
         <activity
-            android:name=".Cortes"
+            android:name=".tela_Cortes"
             android:exported="false" />
         <activity
-            android:name=".Meus_Horarios"
+            android:name=".tela_Meus_Horarios"
             android:exported="false" />
         <activity
-            android:name=".Menu_cliente"
+            android:name=".tela_Menu_cliente"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

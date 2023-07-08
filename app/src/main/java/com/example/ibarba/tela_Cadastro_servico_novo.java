@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Cadastro_servico_novo extends AppCompatActivity {
+public class tela_Cadastro_servico_novo extends AppCompatActivity {
 
 
     private EditText txtNome;
@@ -54,7 +54,7 @@ public class Cadastro_servico_novo extends AppCompatActivity {
                 MainActivity.adicionarServico(novoServico);
 
                 // Exibir mensagem de sucesso
-                Toast.makeText(Cadastro_servico_novo.this, "Servico cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(tela_Cadastro_servico_novo.this, "Servico cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de cadastro e voltar para a MainActivity
                 finish();

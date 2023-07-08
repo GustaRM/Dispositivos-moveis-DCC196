@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#676565"
-    tools:context=".Precos">
+    tools:context=".tela_Precos">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
-        tools:context=".Menu_cliente"
+        tools:context=".tela_Menu_cliente"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-25dp">
 

@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Meus_Horarios extends AppCompatActivity {
+public class tela_Meus_Horarios extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class Meus_Horarios extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Meus_Horarios.this, Menu_cliente.class);
+                Intent intent = new Intent(tela_Meus_Horarios.this, tela_Menu_cliente.class);
                 startActivity(intent);
             }
         });

@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class Cadastro_profissional extends AppCompatActivity {
+public class tela_Cadastro_profissional extends AppCompatActivity {
 
     private ListView listViewProfissionais;
     private List<Usuario> profissionais;
@@ -37,7 +37,7 @@ public class Cadastro_profissional extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Abrir a activity de edição do profissional
-                Intent intent = new Intent(Cadastro_profissional.this, Cadastro_profissional_editar.class);
+                Intent intent = new Intent(tela_Cadastro_profissional.this, tela_Cadastro_profissional_editar.class);
                 intent.putExtra("numeroProfissional",position);
                 startActivity(intent);
             }
@@ -49,7 +49,7 @@ public class Cadastro_profissional extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Abrir a activity de cadastro de novo profissional
-                Intent intent = new Intent(Cadastro_profissional.this, Cadastro_profissional_novo.class);
+                Intent intent = new Intent(tela_Cadastro_profissional.this, tela_Cadastro_profissional_novo.class);
                 startActivity(intent);
             }
         });

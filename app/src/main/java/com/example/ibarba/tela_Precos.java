@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Precos extends AppCompatActivity {
+public class tela_Precos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class Precos extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Precos.this, Menu_cliente.class);
+                Intent intent = new Intent(tela_Precos.this, tela_Menu_cliente.class);
                 startActivity(intent);
             }
         });

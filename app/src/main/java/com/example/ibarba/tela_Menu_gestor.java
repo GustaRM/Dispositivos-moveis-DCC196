@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Menu_gestor extends AppCompatActivity {
+public class tela_Menu_gestor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(Menu_gestor.this, Cadastro_servico.class);
+                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_servico.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de profissionais.
-                Intent intent = new Intent(Menu_gestor.this, Cadastro_profissional.class);
+                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_profissional.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +40,7 @@ public class Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para o menu de relatorios.
-                Intent intent = new Intent(Menu_gestor.this, Menu_relatorio.class);
+                Intent intent = new Intent(tela_Menu_gestor.this, tela_Menu_relatorio.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class Menu_gestor extends AppCompatActivity {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_gestor.this, MainActivity.class);
+                Intent intent = new Intent(tela_Menu_gestor.this, MainActivity.class);
                 startActivity(intent);
             }
         });

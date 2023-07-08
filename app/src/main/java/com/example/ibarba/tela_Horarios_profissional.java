@@ -2,12 +2,10 @@ package com.example.ibarba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class Horarios_profissional extends AppCompatActivity {
+public class tela_Horarios_profissional extends AppCompatActivity {
 
     ArrayList<Spinner> listaStatus = new ArrayList<>();
     ArrayList<TextView> listaHorarios = new ArrayList<>();

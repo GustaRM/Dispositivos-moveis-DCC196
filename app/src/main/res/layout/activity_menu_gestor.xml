@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".Menu_gestor">
+    tools:context=".tela_Menu_gestor">
 
     <TextView
         android:id="@+id/txtTituloMenu"

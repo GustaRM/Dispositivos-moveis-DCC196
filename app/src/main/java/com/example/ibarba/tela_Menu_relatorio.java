@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu_relatorio extends AppCompatActivity {
+public class tela_Menu_relatorio extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class Menu_relatorio extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_relatorio.this, Menu_gestor.class);
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Menu_gestor.class);
                 startActivity(intent);
             }
         });
