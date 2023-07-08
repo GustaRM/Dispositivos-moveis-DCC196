@@ -93,7 +93,6 @@
         android:layout_width="87dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="244dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/archivo_black"
         android:text="Sair"
@@ -103,9 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRelatorios"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAtendimentos"

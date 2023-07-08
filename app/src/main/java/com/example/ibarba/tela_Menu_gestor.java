@@ -50,8 +50,7 @@ public class tela_Menu_gestor extends AppCompatActivity {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_gestor.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

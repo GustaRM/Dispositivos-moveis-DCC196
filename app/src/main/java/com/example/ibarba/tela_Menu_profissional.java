@@ -33,5 +33,14 @@ public class tela_Menu_profissional extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnSair = findViewById((R.id.btnSair));
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 }
