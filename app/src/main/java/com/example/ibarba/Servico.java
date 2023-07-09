@@ -4,26 +4,26 @@ import java.util.UUID;
 
 public class Servico {
 
-    private String ID;
+    private int IDservico;
     private String nome;
     private String descricao;
     private double custo;
-    private double precoFinal;
+    private double PrecoSugerido;
     private int duracao;
 
-    public Servico(String nome, String descricao, double custo, double precoFinal, int duracao) {
-        this.ID = UUID.randomUUID().toString();
+    public Servico(int IDservico, String nome, String descricao, double custo, double PrecoSugerido, int duracao) {
+        this.IDservico = IDservico;
         this.nome = nome;
         this.descricao = descricao;
         this.custo = custo;
-        this.precoFinal = precoFinal;
+        this.PrecoSugerido = PrecoSugerido;
         this.duracao = duracao;
     }
 
     // Getters e Setters
 
-    public String getID() {
-        return ID;
+    public int  getIDservico() {
+        return IDservico;
     }
     public String getNome() {
         return nome;
@@ -49,12 +49,12 @@ public class Servico {
         this.custo = custo;
     }
 
-    public double getPrecoFinal() {
-        return precoFinal;
+    public double getPrecoSugerido() {
+        return PrecoSugerido;
     }
 
-    public void setPrecoFinal(double precoFinal) {
-        this.precoFinal = precoFinal;
+    public void setPrecoSugerido(double PrecoSugerido) {
+        this.PrecoSugerido = PrecoSugerido;
     }
 
     public int getDuracao() {

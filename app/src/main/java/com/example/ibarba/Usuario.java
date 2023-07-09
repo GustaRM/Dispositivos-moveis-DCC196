@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Usuario {
 
-    private String ID;
+    private int IDusuario;
     private String nome;
     private String telefone;
     private String email;
@@ -12,8 +12,8 @@ public class Usuario {
     private String senha;
 
     // Construtor
-    public Usuario(String nome, String telefone, String email, String tipoUsuario, String senha) {
-        this.ID = UUID.randomUUID().toString();
+    public Usuario(int IDusuario, String nome, String telefone, String email, String tipoUsuario, String senha) {
+        this.IDusuario = IDusuario;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -23,8 +23,8 @@ public class Usuario {
 
     // Getters e Setters
 
-    public String getID() {
-        return ID;
+    public int  getIDusuario() {
+        return IDusuario;
     }
     public String getNome() {
         return nome;

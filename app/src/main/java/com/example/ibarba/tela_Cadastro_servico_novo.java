@@ -32,7 +32,7 @@ public class tela_Cadastro_servico_novo extends AppCompatActivity {
         txtNome = findViewById(R.id.txtNome);
         txtDescricao = findViewById(R.id.txtDescricao);
         txtCusto = findViewById(R.id.txtCusto);
-        txtPrecoFinal = findViewById(R.id.txtPrecoFinal);
+        txtPrecoFinal = findViewById(R.id.txtPrecoSugerido);
         txtDuracao = findViewById(R.id.txtDuracao);
         btnConcluir = findViewById(R.id.btnConcluir);
 
@@ -48,15 +48,15 @@ public class tela_Cadastro_servico_novo extends AppCompatActivity {
                 int duracao = Integer.parseInt(txtDuracao.getText().toString());
 
                 // Criar um novo serviço com os dados fornecidos
-                Servico novoServico = new Servico(nome, descricao, custo, precoFinal, duracao);
+                Servico novoServico = new Servico(0, nome, descricao, custo, precoFinal, duracao);
 
                 // Adicionar o novo serviço à lista existente na MainActivity
-                MainActivity.adicionarServico(novoServico);
+                MainActivity.bancoDeDados.adicionaServico(novoServico);
 
                 // Exibir mensagem de sucesso
                 Toast.makeText(tela_Cadastro_servico_novo.this, "Servico cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
 
-                // Encerrar a tela de cadastro e voltar para a MainActivity
+                // Encerrar a tela de cadastro
                 finish();
 
             }

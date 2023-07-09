@@ -42,14 +42,14 @@ public class tela_Cadastro_profissional_novo extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Criar um novo profissional com os dados fornecidos
-                Usuario novoProfissional = new Usuario(
+                Usuario novoProfissional = new Usuario(1,
                         txtNome.getText().toString(),
                         txtTelefone.getText().toString(),
                         txtEmail.getText().toString(),
                         txtTipoUsuario.getText().toString(),
                         txtSenha.getText().toString());
                 // Adicionar o novo profissional à lista existente na MainActivity
-                MainActivity.adicionarUsuario(novoProfissional);
+                MainActivity.bancoDeDados.adicionaUsuario(novoProfissional);
 
                 Toast.makeText(tela_Cadastro_profissional_novo.this, "Profissional criado com sucesso!", Toast.LENGTH_SHORT).show();
 

@@ -45,10 +45,10 @@ public class tela_Cadastro_cliente extends AppCompatActivity {
                 // Verificar se a senha e a confirmação são iguais
                 if (senha.equals(confirmaSenha)) {
                     // Criar um novo usuário com os dados fornecidos
-                    Usuario novoUsuario = new Usuario(nome, telefone, email, "cliente", senha);
+                    Usuario novoUsuario = new Usuario(0, nome, telefone, email, "cliente", senha);
 
-                    // Adicionar o novo usuário à lista existente na MainActivity
-                    MainActivity.adicionarUsuario(novoUsuario);
+                    // Adicionar o novo usuário ao banco de dados
+                    MainActivity.bancoDeDados.adicionaUsuario(novoUsuario);
 
                     // Exibir mensagem de sucesso
                     Toast.makeText(tela_Cadastro_cliente.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();

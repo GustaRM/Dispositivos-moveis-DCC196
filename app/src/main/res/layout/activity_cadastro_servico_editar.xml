@@ -130,24 +130,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Preço final:"
+        android:text="Preço sugerido:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCusto" />
 
     <EditText
-        android:id="@+id/txtPrecoFinal"
+        android:id="@+id/txtPrecoSugerido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Preço final"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/txtCusto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Preço sugerido"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtCusto" />
 
     <TextView
         android:id="@+id/textView5"
@@ -159,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrecoFinal" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecoSugerido" />
 
     <EditText
         android:id="@+id/txtDuracao"
@@ -168,7 +168,7 @@
         android:layout_marginTop="16dp"
         android:hint="Duração da execução do serviço."
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/txtPrecoFinal"
+        app:layout_constraintTop_toBottomOf="@id/txtPrecoSugerido"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="32dp"

@@ -24,7 +24,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_servico);
 
         // Obter a lista de serviços da MainActivity
-        servicos = MainActivity.getServicos();
+        servicos = MainActivity.bancoDeDados.getListaServicos();
 
         // Configurar o ListView
         listViewServicos = findViewById(R.id.listViewServicos);
@@ -37,7 +37,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Abrir a activity de edição do serviço
                 Intent intent = new Intent(tela_Cadastro_servico.this, tela_Cadastro_servico_editar.class);
-                intent.putExtra("numeroServico", position);
+                intent.putExtra("IDservico", servicos.get(position).getIDservico());
                 startActivity(intent);
             }
         });
@@ -58,8 +58,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Cadastro_servico.this, tela_Menu_gestor.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
@@ -69,7 +68,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
         super.onResume();
 
         // Atualize a lista de serviços (se necessário)
-        servicos = MainActivity.getServicos();
+        servicos = MainActivity.bancoDeDados.getListaServicos();
 
         // Notifique o adaptador de mudanças nos dados
         adapter.notifyDataSetChanged();
