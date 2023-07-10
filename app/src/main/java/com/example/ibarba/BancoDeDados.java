@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         //Cria, se não existir, a tabela de Agenda do Profissional.
         comandoSQL =  "CREATE TABLE IF NOT EXISTS AgendaProfissional (" +
+                "IDagendaProfissional INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "IDusuario_profissional INTEGER, " +
                 "data TEXT, " +
                 "hora TEXT, " +
@@ -320,9 +322,9 @@ public class BancoDeDados extends SQLiteOpenHelper {
     // Método para popular a lista de usuários com exemplos
     public void popularUsuarios() {
 
-        this.adicionaUsuario(new Usuario(1, "João", "123456789", "joao@exemplo.com", "cliente", "senha1"));
-        this.adicionaUsuario(new Usuario(2, "Maria", "987654321", "maria@exemplo.com", "cliente", "senha2"));
-        this.adicionaUsuario(new Usuario(3, "Pedro", "456789123", "pedro@exemplo.com", "cliente", "senha3"));
+        this.adicionaUsuario(new Usuario(1, "João", "123456789", "g", "gestor", "1"));
+        this.adicionaUsuario(new Usuario(2, "José", "123456789", "p", "profissional", "1"));
+        this.adicionaUsuario(new Usuario(3, "Maria", "123456789", "c", "cliente", "1"));
         this.adicionaUsuario(new Usuario(4, "Ana", "321654987", "ana@exemplo.com", "cliente", "senha4"));
         this.adicionaUsuario(new Usuario(5, "Carlos", "654987321", "carlos@exemplo.com", "cliente", "senha5"));
         this.adicionaUsuario(new Usuario(6, "Mariana", "789123456", "mariana@exemplo.com", "cliente", "senha6"));
@@ -364,6 +366,77 @@ public class BancoDeDados extends SQLiteOpenHelper {
         this.adicionaServico(new Servico(18,"Limpeza de Orelhas", "Limpeza e cuidados com as orelhas.", 10.0, 15.0, 15));
         this.adicionaServico(new Servico(19,"Alisamento de Barba", "Alisamento dos pelos da barba.", 25.0, 35.0, 40));
 
+    }
+
+
+    public List<AgendaProfissional> buscarAgendaByDataProfissional(String data, int IDusuarioProfissional) {
+        List<AgendaProfissional> listaAgenda = new ArrayList<>();
+
+        // Adicionar horários disponíveis à lista
+        for (int hora = 6; hora <= 22; hora++) {
+            for (int minuto = 0; minuto < 60; minuto += 30) {
+                String horaAgenda = String.format("%02d:%02d", hora, minuto);
+                listaAgenda.add(new AgendaProfissional(0, IDusuarioProfissional, data, horaAgenda, "indisponível"));
+            }
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM AgendaProfissional WHERE data = ? AND IDusuario_Profissional = ?";
+        String[] selectionArgs = { data, String.valueOf(IDusuarioProfissional) };
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int IDagendaProfissional = cursor.getInt(cursor.getColumnIndex("IDagendaProfissional"));
+                int IDusuario_Profissional = cursor.getInt(cursor.getColumnIndex("IDusuario_Profissional"));
+                String dataAgenda = cursor.getString(cursor.getColumnIndex("data"));
+                String hora = cursor.getString(cursor.getColumnIndex("hora"));
+                String status = cursor.getString(cursor.getColumnIndex("status"));
+
+                // Atualizar horário disponível com os dados do banco de dados
+                for (AgendaProfissional agenda : listaAgenda) {
+                    if (agenda.getHora().equals(hora)) {
+                        agenda.setIDagendaProfissional(IDagendaProfissional);
+                        agenda.setStatus(status);
+                        break;
+                    }
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return listaAgenda;
+    }
+
+    public void salvarAgendaByDataProfissional(String data, int IDusuarioProfissional, List<AgendaProfissional> listaAgenda) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction(); //Inicia uma transação para garantir a atomicidade da operação
+
+   //     try {
+            // Deleta registros existentes com status "indisponível" para a data e ID do usuário profissional
+            String deleteQuery = "DELETE FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ? AND status = ?";
+            String[] deleteArgs = { data, String.valueOf(IDusuarioProfissional), "Indisponível" };
+            db.execSQL(deleteQuery, deleteArgs);
+
+            // Inserir novos registros na tabela AgendaProfissional
+            String insertQuery = "INSERT INTO AgendaProfissional (IDusuario_profissional, data, hora, status) VALUES (?, ?, ?, ?)";
+            SQLiteStatement insertStatement = db.compileStatement(insertQuery);
+
+            for (AgendaProfissional agenda : listaAgenda) {
+                // Verificar se o status é diferente de "indisponível" antes de inserir na tabela
+                if (!agenda.getStatus().equals("Indisponível")) {
+                    insertStatement.bindLong(1, IDusuarioProfissional);
+                    insertStatement.bindString(2, data);
+                    insertStatement.bindString(3, agenda.getHora());
+                    insertStatement.bindString(4, agenda.getStatus());
+                    insertStatement.executeInsert();
+                }
+            }
+
+            db.setTransactionSuccessful();
+   //     } finally {
+            db.endTransaction();
+  //      }
     }
 
 
