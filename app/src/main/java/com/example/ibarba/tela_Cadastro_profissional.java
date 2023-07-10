@@ -24,12 +24,12 @@ public class tela_Cadastro_profissional extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_profissional);
 
         // Obter a lista de profissionais
-        profissionais = MainActivity.getProfissionais();
+ //       profissionais = MainActivity.bancoDeDados.getListaProfissionais();
 
         // Configurar o ListView
         listViewProfissionais = findViewById(R.id.listViewProfissionais);
-        adapter = new UsuarioAdapter(this, profissionais);
-        listViewProfissionais.setAdapter(adapter);
+//        adapter = new UsuarioAdapter(this, profissionais);
+//        listViewProfissionais.setAdapter(adapter);
 
 
         // Configurar o clique em um item da lista
@@ -38,7 +38,7 @@ public class tela_Cadastro_profissional extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Abrir a activity de edição do profissional
                 Intent intent = new Intent(tela_Cadastro_profissional.this, tela_Cadastro_profissional_editar.class);
-                intent.putExtra("numeroProfissional",position);
+                intent.putExtra("IDusuario",profissionais.get(position).getIDusuario());
                 startActivity(intent);
             }
         });
@@ -59,7 +59,9 @@ public class tela_Cadastro_profissional extends AppCompatActivity {
         super.onResume();
 
         // Atualiza a lista de profissionais (se necessário)
-        profissionais = MainActivity.getProfissionais();
+        profissionais =MainActivity.bancoDeDados.getListaProfissionais();
+        adapter = new UsuarioAdapter(this, profissionais);
+        listViewProfissionais.setAdapter(adapter);
 
         // Notifique o adaptador de mudanças nos dados
         adapter.notifyDataSetChanged();

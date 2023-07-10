@@ -51,14 +51,15 @@ public class MainActivity extends AppCompatActivity {
         //Instancia o banco de dados
         bancoDeDados = new BancoDeDados(this);
         db = bancoDeDados.getWritableDatabase();
+//        bancoDeDados.apagaTabelas(db);
+        if (bancoDeDados.isTabelaVazia("Usuarios")) {
+            bancoDeDados.popularUsuarios();
+        }
 
+        if (bancoDeDados.isTabelaVazia("Servicos")) {
+            bancoDeDados.popularServicos();
+        }
 
-        // Inicializa a lista de usuários
-//        usuarios = new ArrayList<>();
-        // Popula a lista com os usuários desejados
-        popularUsuarios();
-        //bancoDeDados.exibirUsuarios();
-        popularServicos();
 
         EditText txtEmail = findViewById(R.id.txtEmail);
         EditText txtSenha = findViewById(R.id.txtSenha);
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Método para popular a lista de usuários com exemplos
-    private void popularUsuarios() {
+    public void popularUsuarios() {
 
         bancoDeDados.adicionaUsuario(new Usuario(1, "João", "123456789", "joao@exemplo.com", "cliente", "senha1"));
         bancoDeDados.adicionaUsuario(new Usuario(2, "Maria", "987654321", "maria@exemplo.com", "cliente", "senha2"));
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Método para popular a lista de serviços com exemplos
-    private void popularServicos() {
+    public void popularServicos() {
         servicos.add(new Servico(1,"Corte de Cabelo", "Corte moderno e estilizado.", 20.0, 30.0, 30));
         servicos.add(new Servico(2,"Barba", "Barba bem aparada e cuidada.", 15.0, 25.0, 20));
         servicos.add(new Servico(3,"Sobrancelha", "Design de sobrancelha masculina.", 10.0, 15.0, 15));
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static List<Usuario> getProfissionais() {
+/*    public static List<Usuario> getProfissionais() {
 
         List<Usuario> profissionais = new ArrayList<>();
 
@@ -173,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return profissionais;
     }
+
+ */
 
     protected void onDestroy() {
         super.onDestroy();

@@ -23,7 +23,7 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
     private Button btnExcluir;
 
     private Usuario profissional;
-    private int numeroProfissional;
+    private int IDusuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,9 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
         // Obter o objeto Usuario passado como extra
         Intent intent = getIntent();
         if (intent != null) {
-            numeroProfissional = intent.getIntExtra("numeroProfissional", -1);
-            if (numeroProfissional!=-1) {
-                profissional = MainActivity.getProfissionais().get(numeroProfissional);
+            IDusuario = intent.getIntExtra("IDusuario", -1);
+            if (IDusuario!=-1) {
+                profissional = MainActivity.bancoDeDados.getUsuarioByID(IDusuario);
             }
         }
 
@@ -70,7 +70,7 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
                 profissional.setEmail(txtEmail.getText().toString());
                 profissional.setTipoUsuario(txtTipoUsuario.getText().toString());
                 profissional.setSenha(txtSenha.getText().toString());
-
+                MainActivity.bancoDeDados.atualizarUsuario(profissional);
                 Toast.makeText(tela_Cadastro_profissional_editar.this, "Profissional alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
@@ -84,12 +84,11 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Obter os valores dos campos
-
-       //         MainActivity.getServicos().remove(numeroServico);
+                MainActivity.bancoDeDados.removerUsuarioByID(IDusuario);
 
                 Toast.makeText(tela_Cadastro_profissional_editar.this, "Profissional excluído com sucesso!", Toast.LENGTH_SHORT).show();
 
-                // Encerrar a tela de edição e voltar para a MainActivity
+                // Encerrar a tela de edição
                 finish();
 
             }

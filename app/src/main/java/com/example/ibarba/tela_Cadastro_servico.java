@@ -24,12 +24,12 @@ public class tela_Cadastro_servico extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_servico);
 
         // Obter a lista de serviços da MainActivity
-        servicos = MainActivity.bancoDeDados.getListaServicos();
+ //       servicos = MainActivity.bancoDeDados.getListaServicos();
 
         // Configurar o ListView
         listViewServicos = findViewById(R.id.listViewServicos);
-        adapter = new ServicoAdapter(this, servicos);
-        listViewServicos.setAdapter(adapter);
+  //      adapter = new ServicoAdapter(this, servicos);
+  //      listViewServicos.setAdapter(adapter);
 
         // Configurar o clique em um item da lista
         listViewServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,10 +67,12 @@ public class tela_Cadastro_servico extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // Atualize a lista de serviços (se necessário)
+        // Atualiza a lista de serviços (se necessário)
         servicos = MainActivity.bancoDeDados.getListaServicos();
 
+        adapter = new ServicoAdapter(this, servicos);
+        listViewServicos.setAdapter(adapter);
         // Notifique o adaptador de mudanças nos dados
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
     }
 }
