@@ -77,6 +77,21 @@ tools:context=".tela_Menu_profissional">
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/btnAgendamentos"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Meus Agendamentos"
+        android:textSize="16sp"
+        app:backgroundTint="#3351BC"
+        app:cornerRadius="10px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHorarios" />
+
+    <Button
         android:id="@+id/btnAtendimentos"
         android:layout_width="220dp"
         android:layout_height="60dp"
@@ -89,6 +104,6 @@ tools:context=".tela_Menu_profissional">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHorarios" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAgendamentos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

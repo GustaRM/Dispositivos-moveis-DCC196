@@ -14,7 +14,9 @@ public class tela_Menu_profissional extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_profissional);
         Button btnHorarios = findViewById(R.id.btnHorarios);
+        Button btnAgendamentos = findViewById(R.id.btnAgendamentos);
         Button btnAtendimentos = findViewById(R.id.btnAtendimentos);
+
 
         btnHorarios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,11 +27,20 @@ public class tela_Menu_profissional extends AppCompatActivity {
             }
         });
 
+        btnAgendamentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Redirecionar para a tela de agendamentos do profissionais.
+                Intent intent = new Intent(tela_Menu_profissional.this, tela_Agendamentos_profissional.class);
+                startActivity(intent);
+            }
+        });
+
         btnAtendimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Redirecionar para a tela de cadastro de profissionais.
-                Intent intent = new Intent(tela_Menu_profissional.this, tela_Cadastro_profissional.class);
+                // Redirecionar para a tela de atendimento.
+                Intent intent = new Intent(tela_Menu_profissional.this, tela_Agendamentos_profissional.class);
                 startActivity(intent);
             }
         });

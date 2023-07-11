@@ -496,7 +496,40 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         return listaAgendamentosCliente;
     }
+    public ArrayList<String> getListaAgendamentosProfissionalByIDusuario(int IDusuario) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        ArrayList<String> listaAgendamentosCliente = new ArrayList<>();
+
+
+        // Realizar a consulta nas tabelas Usuario, Servico e Atendimento
+        String comnadoSQL = "SELECT Servicos.nome AS nomeServico, Usuarios.nome AS nomeCliente, Atendimentos.data, Atendimentos.horaInicio " +
+                "FROM Usuarios, Servicos, Atendimentos " +
+                "WHERE Atendimentos.IDusuario_profissional = ? " +
+                "AND Usuarios.IDusuario = Atendimentos.IDusuario_cliente " +
+                "AND Servicos.IDservico = Atendimentos.IDservico " +
+                "AND (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)) >= date('now')";
+        Cursor cursor = db.rawQuery(comnadoSQL, new String[]{String.valueOf(IDusuario)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Obter os valores do cursor
+                String nomeServico = cursor.getString(cursor.getColumnIndex("nomeServico"));
+                String nomeCliente = cursor.getString(cursor.getColumnIndex("nomeCliente"));
+                String data = cursor.getString(cursor.getColumnIndex("data"));
+                String horaInicio = cursor.getString(cursor.getColumnIndex("horaInicio"));
+
+                // Concatenar os campos e adicionar à lista
+                String campoConcatenado = nomeServico + " para " + nomeCliente + " no dia " + data + " às " + horaInicio;
+                listaAgendamentosCliente.add(campoConcatenado);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return listaAgendamentosCliente;
+    }
 
     // Método para popular a lista de usuários com exemplos
     public void popularUsuarios() {
