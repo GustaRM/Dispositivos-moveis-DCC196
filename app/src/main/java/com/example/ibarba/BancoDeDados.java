@@ -369,26 +369,26 @@ public class BancoDeDados extends SQLiteOpenHelper {
     }
 
 
-    public List<AgendaProfissional> buscarAgendaByDataProfissional(String data, int IDusuarioProfissional) {
+    public List<AgendaProfissional> buscarAgendaByDataProfissional(String data, int IDusuario_profissional) {
         List<AgendaProfissional> listaAgenda = new ArrayList<>();
 
         // Adicionar horários disponíveis à lista
         for (int hora = 6; hora <= 22; hora++) {
             for (int minuto = 0; minuto < 60; minuto += 30) {
                 String horaAgenda = String.format("%02d:%02d", hora, minuto);
-                listaAgenda.add(new AgendaProfissional(0, IDusuarioProfissional, data, horaAgenda, "indisponível"));
+                listaAgenda.add(new AgendaProfissional(0, IDusuario_profissional, data, horaAgenda, "Indisponível"));
             }
         }
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM AgendaProfissional WHERE data = ? AND IDusuario_Profissional = ?";
-        String[] selectionArgs = { data, String.valueOf(IDusuarioProfissional) };
+        String query = "SELECT * FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ?";
+        String[] selectionArgs = { data, String.valueOf(IDusuario_profissional) };
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         if (cursor.moveToFirst()) {
             do {
                 int IDagendaProfissional = cursor.getInt(cursor.getColumnIndex("IDagendaProfissional"));
-                int IDusuario_Profissional = cursor.getInt(cursor.getColumnIndex("IDusuario_Profissional"));
+                int IDusuario_Profissional = cursor.getInt(cursor.getColumnIndex("IDusuario_profissional"));
                 String dataAgenda = cursor.getString(cursor.getColumnIndex("data"));
                 String hora = cursor.getString(cursor.getColumnIndex("hora"));
                 String status = cursor.getString(cursor.getColumnIndex("status"));
@@ -408,14 +408,14 @@ public class BancoDeDados extends SQLiteOpenHelper {
         return listaAgenda;
     }
 
-    public void salvarAgendaByDataProfissional(String data, int IDusuarioProfissional, List<AgendaProfissional> listaAgenda) {
+    public void salvarAgendaByDataProfissional(String data, int IDusuario_profissional, List<AgendaProfissional> listaAgenda) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction(); //Inicia uma transação para garantir a atomicidade da operação
 
-   //     try {
-            // Deleta registros existentes com status "indisponível" para a data e ID do usuário profissional
-            String deleteQuery = "DELETE FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ? AND status = ?";
-            String[] deleteArgs = { data, String.valueOf(IDusuarioProfissional), "Indisponível" };
+        try {
+            // Apaga a agenda do dia antiga para criar a nova
+            String deleteQuery = "DELETE FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ?";
+            String[] deleteArgs = { data, String.valueOf(IDusuario_profissional)};
             db.execSQL(deleteQuery, deleteArgs);
 
             // Inserir novos registros na tabela AgendaProfissional
@@ -423,9 +423,9 @@ public class BancoDeDados extends SQLiteOpenHelper {
             SQLiteStatement insertStatement = db.compileStatement(insertQuery);
 
             for (AgendaProfissional agenda : listaAgenda) {
-                // Verificar se o status é diferente de "indisponível" antes de inserir na tabela
+                // Verificar se o status é diferente de "Indisponível" antes de inserir na tabela
                 if (!agenda.getStatus().equals("Indisponível")) {
-                    insertStatement.bindLong(1, IDusuarioProfissional);
+                    insertStatement.bindLong(1, IDusuario_profissional);
                     insertStatement.bindString(2, data);
                     insertStatement.bindString(3, agenda.getHora());
                     insertStatement.bindString(4, agenda.getStatus());
@@ -434,9 +434,9 @@ public class BancoDeDados extends SQLiteOpenHelper {
             }
 
             db.setTransactionSuccessful();
-   //     } finally {
+        } finally {
             db.endTransaction();
-  //      }
+        }
     }
 
 

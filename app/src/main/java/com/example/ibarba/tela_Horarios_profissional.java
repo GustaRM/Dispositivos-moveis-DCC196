@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,60 +40,18 @@ public class tela_Horarios_profissional extends AppCompatActivity {
         listaAgenda = MainActivity.bancoDeDados.buscarAgendaByDataProfissional(data, MainActivity.IDusuario);
         preencheHorarios(linearLayout, listaAgenda);
 
-        /*
-        int horaInicial = 6; // Hora inicial (06:00)
-        int minutoInicial = 0; // Minuto inicial
-        int intervaloMinutos = 30; // Intervalo de 30 minutos
-        int colunas = 2; // Número de colunas
-        int totalHorarios = 30; // Número total de CheckBoxes
-
-
-        int contador = 0; // Contador para controlar a quantidade de CheckBoxes
-
-        for (int i = 0; i < totalHorarios / colunas; i++) {
-            LinearLayout rowLayout = new LinearLayout(this);
-            rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayout.addView(rowLayout);
-
-            for (int j = 0; j < colunas; j++) {
-
-                // Cria um TextView para exibir o horário
-                TextView textViewHorario = new TextView(this);
-                textViewHorario.setText(String.format(Locale.getDefault(), "%02d:%02d", horaInicial, minutoInicial));
-                listaHorarios.add(textViewHorario);
-
-                // Cria um Spinner para selecionar o status
-                Spinner spinnerStatus = new Spinner(this);
-                listaStatus.add(spinnerStatus);
-
-
-                ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
-                        new String[]{"Livre", "Indisponível", "Reservado cliente"});
-                spinnerStatus.setAdapter(statusAdapter);
-
-                rowLayout.addView(textViewHorario);
-                rowLayout.addView(spinnerStatus);
-
-                contador++;
-
-                minutoInicial += intervaloMinutos;
-                if (minutoInicial >= 60) {
-                    minutoInicial %= 60;
-                    horaInicial++;
-                }
-
-                if (contador == totalHorarios) {
-                    break;
-                }
-            }
-        }
-        */
-
         btnMarcaTodos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (Spinner spinner : listaStatus) {
-                    spinner.setSelection(0);
+                for (int i = 0; i < listaHorarios.size(); i++) {
+                    TextView textViewHorario = listaHorarios.get(i);
+                    Spinner spinnerStatus = listaStatus.get(i);
+
+                    String horario = textViewHorario.getText().toString();
+
+                    if ((horario.compareTo("08:00") >= 0 && horario.compareTo("12:00") <= 0) || (horario.compareTo("14:00") >= 0 && horario.compareTo("18:00") <= 0)) {
+                        spinnerStatus.setSelection(0);
+                    }
                 }
             }
         });
@@ -121,7 +80,29 @@ public class tela_Horarios_profissional extends AppCompatActivity {
             }
         });
 
+        datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // Remove Spinners da listaStatus
+                for (Spinner spinner : listaStatus) {
+                    ((ViewGroup) spinner.getParent()).removeView(spinner);
+                }
+                listaStatus.clear();
 
+                // Remove TextViews da listaHorarios
+                for (TextView textView : listaHorarios) {
+                    ((ViewGroup) textView.getParent()).removeView(textView);
+                }
+                listaHorarios.clear();
+
+                //Limpa listaAgenda
+                listaAgenda.clear();
+                String data = String.format("%02d/%02d/%04d", dayOfMonth, monthOfYear + 1, year);
+                listaAgenda = MainActivity.bancoDeDados.buscarAgendaByDataProfissional(data, MainActivity.IDusuario);
+                preencheHorarios(linearLayout, listaAgenda);
+
+            }
+        });
     }
 
     private void preencheHorarios(LinearLayout linearLayout, List<AgendaProfissional> listaAgenda) {
@@ -133,6 +114,7 @@ public class tela_Horarios_profissional extends AppCompatActivity {
 
         int numColunas = 2; // Define o número de colunas desejado
         int contador = 0;
+        int posicaoStatus = 0;
 
         LinearLayout rowLayout = new LinearLayout(this);
         rowLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -158,7 +140,9 @@ public class tela_Horarios_profissional extends AppCompatActivity {
             Spinner spinnerStatus = new Spinner(this);
             ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Livre", "Indisponível", "Reservado cliente"});
             //spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            posicaoStatus = spinnerAdapter.getPosition(agenda.getStatus());
             spinnerStatus.setAdapter(spinnerAdapter);
+            spinnerStatus.setSelection(posicaoStatus);
             listaStatus.add(spinnerStatus);
 
          //   // Cria um LinearLayout para representar uma coluna
@@ -175,7 +159,7 @@ public class tela_Horarios_profissional extends AppCompatActivity {
             contador++;
         }
 
-// Adiciona a última linha ao LinearLayout principal
+        // Adiciona a última linha ao LinearLayout principal
         linearLayout.addView(rowLayout);
 
     }
