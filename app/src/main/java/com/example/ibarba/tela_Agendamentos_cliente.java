@@ -12,13 +12,15 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class tela_Meus_Horarios extends AppCompatActivity {
+public class tela_Agendamentos_cliente extends AppCompatActivity {
 
+    private ArrayList<String> listaAgendamentosCliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meus_horarios);
+        setContentView(R.layout.activity_agendamentos_cliente);
 
         ListView lista = (ListView) findViewById(R.id.listaAgendamentos);
         ArrayList<String> agendamentos = preencherAgendamentos();
@@ -30,8 +32,7 @@ public class tela_Meus_Horarios extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Meus_Horarios.this, tela_Menu_cliente.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -44,10 +45,7 @@ public class tela_Meus_Horarios extends AppCompatActivity {
     }
 
     private ArrayList<String> preencherAgendamentos() {
-        ArrayList<String> agendamentos = new ArrayList<String>();
-        agendamentos.add("Massagem - 08:00");
-        agendamentos.add("Sobrancelha - 09:00");
-
-        return agendamentos;
+        listaAgendamentosCliente = MainActivity.bancoDeDados.getListaAgendamentosClienteByIDusuario(MainActivity.IDusuario);
+        return listaAgendamentosCliente;
     }
 }

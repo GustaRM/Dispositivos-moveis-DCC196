@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Meus_Horarios">
+    tools:context=".tela_Agendamentos_cliente">
 
     <ListView
         android:id="@+id/listaAgendamentos"
-        android:layout_width="263dp"
-        android:layout_height="208dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:background="#7A7878"
+        app:layout_constraintBottom_toTopOf="@+id/btnSair"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
@@ -26,11 +26,12 @@
         android:layout_marginTop="40dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
-        android:text="Meus Horários"
+        android:text="Agendamentos"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +41,6 @@
         android:layout_height="55dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
@@ -51,9 +51,7 @@
         android:id="@+id/imageView3"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="15dp"
         android:rotation="-174"
         android:rotationY="170"
         android:src="@drawable/pngwing_com"
@@ -65,9 +63,6 @@
         android:id="@+id/btnSair"
         android:layout_width="127dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginBottom="100dp"
         android:fontFamily="@font/archivo_black"
         android:text="Voltar"
         android:textSize="16sp"
@@ -76,8 +71,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPrecos"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

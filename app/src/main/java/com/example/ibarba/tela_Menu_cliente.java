@@ -22,7 +22,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_Meus_Horarios.class);
+                Intent intent = new Intent(tela_Menu_cliente.this, tela_Agendamentos_cliente.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_AgendarServico.class);
+                Intent intent = new Intent(tela_Menu_cliente.this, tela_Agendar_cliente.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +40,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_Precos.class);
+                Intent intent = new Intent(tela_Menu_cliente.this, tela_Precos_cliente.class);
                 startActivity(intent);
             }
         });
@@ -50,8 +50,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_cliente.this, MainActivity.class);
-                startActivity(intent);
+               finish();
             }
         });
 
