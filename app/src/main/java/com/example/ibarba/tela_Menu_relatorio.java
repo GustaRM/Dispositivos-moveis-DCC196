@@ -72,7 +72,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
         btnRelatorio2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_2.class);
                 intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
                 startActivity(intent);
             }
@@ -84,7 +84,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
-                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                intent.putExtra("ano", spinnerAno.getSelectedItem().toString());
                 startActivity(intent);
             }
         });
@@ -95,7 +95,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
-                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                intent.putExtra("ano", spinnerAno.getSelectedItem().toString());
                 startActivity(intent);
             }
         });

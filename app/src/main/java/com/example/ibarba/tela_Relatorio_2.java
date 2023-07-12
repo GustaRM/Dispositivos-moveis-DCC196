@@ -17,7 +17,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class tela_Relatorio_1 extends AppCompatActivity {
+public class tela_Relatorio_2 extends AppCompatActivity {
 
     private PieChart pieChart;
 
@@ -27,9 +27,10 @@ public class tela_Relatorio_1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relatorio1);
+        setContentView(R.layout.activity_relatorio2);
 
-                Intent intent = getIntent();
+
+        Intent intent = getIntent();
         if (intent != null) {
             mes = intent.getStringExtra("mes");
         }
@@ -37,22 +38,18 @@ public class tela_Relatorio_1 extends AppCompatActivity {
         TextView chartTitle = findViewById(R.id.chartTitle);
         pieChart = findViewById(R.id.pieChart);
 
-        listaDados = MainActivity.bancoDeDados.getFaturamentoProfissionaisNoMes(mes);
+        listaDados = MainActivity.bancoDeDados.getFaturamentoServicosNoMes(mes);
         List<PieEntry> entries = new ArrayList<>();
 
         for (String dados : listaDados) {
 
             String[] partes = dados.split("::");
-            String nomeProfissional = partes[0];
+            String nomeServico = partes[0];
             float valor = Float.parseFloat(partes[1]);
 
-            entries.add(new PieEntry(valor, nomeProfissional));
+            entries.add(new PieEntry(valor, nomeServico));
         }
-/*        entries.add(new PieEntry(4280f, "Ana"));
-        entries.add(new PieEntry(3850f, "Pedro"));
-        entries.add(new PieEntry(4050f, "João"));
-        entries.add(new PieEntry(6500f, "Maria"));
-*/
+
 
         PieDataSet dataSet = new PieDataSet(entries, "Data");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -67,7 +64,7 @@ public class tela_Relatorio_1 extends AppCompatActivity {
         pieChart.setEntryLabelTextSize(10f);
 
 
-        chartTitle.setText("Faturamento em reais, por Profissional, no mês "+mes);
+        chartTitle.setText("Faturamento em reais, por Serviço, no mês "+mes);
         pieChart.getDescription().setEnabled(false);
         pieChart.animateY(1000);
         pieChart.invalidate();

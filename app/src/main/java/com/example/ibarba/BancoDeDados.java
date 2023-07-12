@@ -41,7 +41,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.execSQL(comandoSQL);
 
         //Cria, se não existir, a tabela de Serviços
-        comandoSQL =  "CREATE TABLE IF NOT EXISTS Servicos (" +
+        comandoSQL = "CREATE TABLE IF NOT EXISTS Servicos (" +
                 "IDservico INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nome TEXT, " +
                 "descricao TEXT, " +
@@ -51,7 +51,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.execSQL(comandoSQL);
 
         //Cria, se não existir, a tabela de Agenda do Profissional.
-        comandoSQL =  "CREATE TABLE IF NOT EXISTS AgendaProfissional (" +
+        comandoSQL = "CREATE TABLE IF NOT EXISTS AgendaProfissional (" +
                 "IDagendaProfissional INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "IDusuario_profissional INTEGER, " +
                 "data TEXT, " +
@@ -61,7 +61,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.execSQL(comandoSQL);
 
         //Cria, se não existir, a tabela de Agenda de atendimentos.
-        comandoSQL =  "CREATE TABLE IF NOT EXISTS Atendimentos (" +
+        comandoSQL = "CREATE TABLE IF NOT EXISTS Atendimentos (" +
                 "IDatendimento INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "data TEXT, " +
                 "horaInicio TEXT, " +
@@ -87,13 +87,13 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public void apagaTabelas(SQLiteDatabase db) {
         String comandoSQL;
 
-        comandoSQL =  "DROP TABLE IF EXISTS Usuarios";
+        comandoSQL = "DROP TABLE IF EXISTS Usuarios";
         db.execSQL(comandoSQL);
-        comandoSQL =  "DROP TABLE IF EXISTS Servicos";
+        comandoSQL = "DROP TABLE IF EXISTS Servicos";
         db.execSQL(comandoSQL);
-        comandoSQL =  "DROP TABLE IF EXISTS AgendaProfissional";
+        comandoSQL = "DROP TABLE IF EXISTS AgendaProfissional";
         db.execSQL(comandoSQL);
-        comandoSQL =  "DROP TABLE IF EXISTS Atendimentos";
+        comandoSQL = "DROP TABLE IF EXISTS Atendimentos";
         db.execSQL(comandoSQL);
 
     }
@@ -102,7 +102,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public Usuario getUsuarioByEmailSenha(String email, String senha) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM Usuarios WHERE email=? AND senha=?";
-        String[] selectionArgs = { email, senha };
+        String[] selectionArgs = {email, senha};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         Usuario usuario = null;
@@ -120,7 +120,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public Usuario getUsuarioByID(int IDusuario) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM Usuarios WHERE IDusuario=?";
-        String[] selectionArgs = {  String.valueOf(IDusuario) };
+        String[] selectionArgs = {String.valueOf(IDusuario)};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         Usuario usuario = null;
@@ -154,11 +154,12 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String whereClause = "IDusuario = ?";
-        String[] whereArgs = { String.valueOf(IDusuario) };
+        String[] whereArgs = {String.valueOf(IDusuario)};
 
         db.delete("Usuarios", whereClause, whereArgs);
         db.close();
     }
+
     public void atualizarUsuario(Usuario usuario) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
@@ -169,7 +170,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         valores.put("senha", usuario.getSenha());
 
         String whereClause = "IDusuario = ?";
-        String[] whereArgs = { String.valueOf(usuario.getIDusuario()) };
+        String[] whereArgs = {String.valueOf(usuario.getIDusuario())};
 
         db.update("Usuarios", valores, whereClause, whereArgs);
         db.close();
@@ -178,7 +179,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public Servico getServicoById(int IDservico) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM servicos WHERE IDservico = ?";
-        String[] selectionArgs = { String.valueOf(IDservico) };
+        String[] selectionArgs = {String.valueOf(IDservico)};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         Servico servico = null;
@@ -245,7 +246,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         valores.put("duracao", servico.getDuracao());
 
         String whereClause = "IDservico = ?";
-        String[] whereArgs = { String.valueOf(servico.getIDservico()) };
+        String[] whereArgs = {String.valueOf(servico.getIDservico())};
 
         db.update("Servicos", valores, whereClause, whereArgs);
         db.close();
@@ -255,7 +256,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String whereClause = "IDservico = ?";
-        String[] whereArgs = { String.valueOf(IDservico) };
+        String[] whereArgs = {String.valueOf(IDservico)};
 
         db.delete("Servicos", whereClause, whereArgs);
         db.close();
@@ -350,9 +351,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     }
 
 
-
-
-
     public List<AgendaProfissional> buscarAgendaByDataProfissional(String data, int IDusuario_profissional) {
         List<AgendaProfissional> listaAgenda = new ArrayList<>();
 
@@ -366,7 +364,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ?";
-        String[] selectionArgs = { data, String.valueOf(IDusuario_profissional) };
+        String[] selectionArgs = {data, String.valueOf(IDusuario_profissional)};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         if (cursor.moveToFirst()) {
@@ -397,7 +395,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         try {
             // Apaga a agenda do dia antiga para criar a nova
             String deleteQuery = "DELETE FROM AgendaProfissional WHERE data = ? AND IDusuario_profissional = ?";
-            String[] deleteArgs = { data, String.valueOf(IDusuario_profissional)};
+            String[] deleteArgs = {data, String.valueOf(IDusuario_profissional)};
             db.execSQL(deleteQuery, deleteArgs);
 
             // Inserir novos registros na tabela AgendaProfissional
@@ -420,6 +418,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
+
     public List<String> buscarDatasDisponiveisByIDusuario_profissional(int IDusuario_profissional) {
         List<String> listaDatas = new ArrayList<>();
 
@@ -427,7 +426,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT DISTINCT data FROM AgendaProfissional WHERE IDusuario_profissional = ? AND status = 'Livre' AND (SUBSTR(data, 7, 4) || '-' || SUBSTR(data, 4, 2) || '-' || SUBSTR(data, 1, 2)) >= date('now')";
-        String[] selectionArgs = { String.valueOf(IDusuario_profissional) };
+        String[] selectionArgs = {String.valueOf(IDusuario_profissional)};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         if (cursor.moveToFirst()) {
@@ -446,7 +445,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT hora FROM AgendaProfissional WHERE IDusuario_profissional = ?  AND data =? AND status = 'Livre'";
-        String[] selectionArgs = { String.valueOf(IDusuario_profissional), data };
+        String[] selectionArgs = {String.valueOf(IDusuario_profissional), data};
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         if (cursor.moveToFirst()) {
@@ -483,7 +482,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("status", status);
 
-        String[] whereArgs = { String.valueOf(IDusuario_profissional), data, hora };
+        String[] whereArgs = {String.valueOf(IDusuario_profissional), data, hora};
 
         int resultado = db.update("AgendaProfissional", values, "IDusuario_profissional = ? AND data = ? AND hora = ?", whereArgs);
 
@@ -516,7 +515,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
                 String status = cursor.getString(cursor.getColumnIndex("status"));
 
                 // Concatenar os campos e adicionar à lista
-                String campoConcatenado =  String.valueOf(IDatendimento) +"::" + nomeServico + " com " + nomeProfissional + " no dia " + data + " às " + horaInicio+ "("+status+")";
+                String campoConcatenado = String.valueOf(IDatendimento) + "::" + nomeServico + " com " + nomeProfissional + " no dia " + data + " às " + horaInicio + "(" + status + ")";
                 listaAgendamentosCliente.add(campoConcatenado);
             } while (cursor.moveToNext());
         }
@@ -526,6 +525,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         return listaAgendamentosCliente;
     }
+
     public ArrayList<String> getListaAgendamentosProfissionalByIDusuario(int IDusuario) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -553,7 +553,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
                 String status = cursor.getString(cursor.getColumnIndex("status"));
 
                 // Concatenar os campos e adicionar à lista
-                String campoConcatenado = String.valueOf(IDatendimento) +"::" + String.valueOf(precoFinal)+"::" + nomeServico + " para " + nomeCliente + " no dia " + data + " às " + horaInicio+"("+status+")";
+                String campoConcatenado = String.valueOf(IDatendimento) + "::" + String.valueOf(precoFinal) + "::" + nomeServico + " para " + nomeCliente + " no dia " + data + " às " + horaInicio + "(" + status + ")";
                 listaAgendamentosCliente.add(campoConcatenado);
             } while (cursor.moveToNext());
         }
@@ -591,27 +591,28 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
     // Método para popular a lista de serviços com exemplos
     public void popularServicos() {
-        this.adicionaServico(new Servico(1,"Corte de Cabelo", "Corte moderno e estilizado.", 20.0, 30.0, 30));
-        this.adicionaServico(new Servico(2,"Barba", "Barba bem aparada e cuidada.", 15.0, 25.0, 20));
-        this.adicionaServico(new Servico(3,"Sobrancelha", "Design de sobrancelha masculina.", 10.0, 15.0, 15));
-        this.adicionaServico(new Servico(4,"Massagem", "Massagem relaxante para aliviar o estresse.", 40.0, 60.0, 60));
-        this.adicionaServico(new Servico(5,"Limpeza de Pele", "Tratamento facial para limpar a pele.", 30.0, 45.0, 45));
-        this.adicionaServico(new Servico(6,"Corte com Navalha", "Corte de cabelo feito com navalha.", 25.0, 35.0, 40));
-        this.adicionaServico(new Servico(7,"Tintura de Barba", "Coloração da barba para um visual diferente.", 20.0, 30.0, 30));
+        this.adicionaServico(new Servico(1, "Corte de Cabelo", "Corte moderno e estilizado.", 20.0, 30.0, 30));
+        this.adicionaServico(new Servico(2, "Barba", "Barba bem aparada e cuidada.", 15.0, 25.0, 20));
+        this.adicionaServico(new Servico(3, "Sobrancelha", "Design de sobrancelha masculina.", 10.0, 15.0, 15));
+        this.adicionaServico(new Servico(4, "Massagem", "Massagem relaxante para aliviar o estresse.", 40.0, 60.0, 60));
+        this.adicionaServico(new Servico(5, "Limpeza de Pele", "Tratamento facial para limpar a pele.", 30.0, 45.0, 45));
+        this.adicionaServico(new Servico(6, "Corte com Navalha", "Corte de cabelo feito com navalha.", 25.0, 35.0, 40));
+        this.adicionaServico(new Servico(7, "Tintura de Barba", "Coloração da barba para um visual diferente.", 20.0, 30.0, 30));
         this.adicionaServico(new Servico(8, "Hidratação Capilar", "Tratamento para hidratar e fortalecer os cabelos.", 30.0, 45.0, 45));
-        this.adicionaServico(new Servico(9,"Depilação", "Remoção de pelos indesejados.", 25.0, 35.0, 40));
-        this.adicionaServico(new Servico(10,"Design de Sobrancelha", "Modelagem de sobrancelhas masculinas.", 10.0, 15.0, 15));
+        this.adicionaServico(new Servico(9, "Depilação", "Remoção de pelos indesejados.", 25.0, 35.0, 40));
+        this.adicionaServico(new Servico(10, "Design de Sobrancelha", "Modelagem de sobrancelhas masculinas.", 10.0, 15.0, 15));
         this.adicionaServico(new Servico(11, "Corte Infantil", "Corte de cabelo para crianças.", 15.0, 25.0, 20));
-        this.adicionaServico(new Servico(12,"Relaxamento Capilar", "Tratamento para relaxar e alisar os cabelos.", 40.0, 60.0, 60));
-        this.adicionaServico(new Servico(13,"Pedicure", "Tratamento estético para os pés masculinos.", 20.0, 30.0, 30));
-        this.adicionaServico(new Servico(14,"Manicure", "Tratamento estético para as unhas masculinas.", 15.0, 25.0, 20));
-        this.adicionaServico(new Servico(15,"Tintura de Cabelo", "Coloração dos cabelos para um visual diferente.", 30.0, 45.0, 45));
-        this.adicionaServico(new Servico(16,"Alinhamento de Barba", "Alinhamento e desenho da barba.", 20.0, 30.0, 30));
-        this.adicionaServico(new Servico(17,"Massagem Capilar", "Massagem no couro cabeludo para relaxamento.", 25.0, 35.0, 40));
-        this.adicionaServico(new Servico(18,"Limpeza de Orelhas", "Limpeza e cuidados com as orelhas.", 10.0, 15.0, 15));
-        this.adicionaServico(new Servico(19,"Alisamento de Barba", "Alisamento dos pelos da barba.", 25.0, 35.0, 40));
+        this.adicionaServico(new Servico(12, "Relaxamento Capilar", "Tratamento para relaxar e alisar os cabelos.", 40.0, 60.0, 60));
+        this.adicionaServico(new Servico(13, "Pedicure", "Tratamento estético para os pés masculinos.", 20.0, 30.0, 30));
+        this.adicionaServico(new Servico(14, "Manicure", "Tratamento estético para as unhas masculinas.", 15.0, 25.0, 20));
+        this.adicionaServico(new Servico(15, "Tintura de Cabelo", "Coloração dos cabelos para um visual diferente.", 30.0, 45.0, 45));
+        this.adicionaServico(new Servico(16, "Alinhamento de Barba", "Alinhamento e desenho da barba.", 20.0, 30.0, 30));
+        this.adicionaServico(new Servico(17, "Massagem Capilar", "Massagem no couro cabeludo para relaxamento.", 25.0, 35.0, 40));
+        this.adicionaServico(new Servico(18, "Limpeza de Orelhas", "Limpeza e cuidados com as orelhas.", 10.0, 15.0, 15));
+        this.adicionaServico(new Servico(19, "Alisamento de Barba", "Alisamento dos pelos da barba.", 25.0, 35.0, 40));
 
     }
+
     //Usado apenas para DEBUG
     public ArrayList<String> obterTodosAtendimentosConcatenados1() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -700,7 +701,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
                 String precoFormatado = decimalFormat.format(precoServico);
 
                 // Concatenar o nome, descrição e preço formatado e adicionar à lista
-                String nomePrecoServico = nomeServico + " - " + descricaoServico + " - Apenas R$ " + precoFormatado +" !!!";
+                String nomePrecoServico = nomeServico + " - " + descricaoServico + " - Apenas R$ " + precoFormatado + " !!!";
                 nomesPrecosServicos.add(nomePrecoServico);
             } while (cursor.moveToNext());
         }
@@ -725,6 +726,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         db.close();
     }
+
     public void atualizarAtendimento(int IDatendimento, String status) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -780,6 +782,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
         return meses;
     }
+
     //para DEBUG
     public void populaTabelaAtendimentos() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -798,7 +801,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
             String queryProfissional = "SELECT IDusuario FROM Usuarios WHERE tipoUsuario = 'profissional'";
             Cursor cursorProfissional = db.rawQuery(queryProfissional, null);
             int countProfissional = cursorProfissional.getCount();
-            int randomIndexProfissional = random.nextInt(countProfissional-1)+1;
+            int randomIndexProfissional = random.nextInt(countProfissional - 1) + 1;
             cursorProfissional.move(randomIndexProfissional);
             int idProfissional = cursorProfissional.getInt(cursorProfissional.getColumnIndex("IDusuario"));
             cursorProfissional.close();
@@ -807,7 +810,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
             String queryCliente = "SELECT IDusuario FROM Usuarios WHERE tipoUsuario = 'cliente'";
             Cursor cursorCliente = db.rawQuery(queryCliente, null);
             int countCliente = cursorCliente.getCount();
-            int randomIndexCliente = random.nextInt(countCliente-1)+1;
+            int randomIndexCliente = random.nextInt(countCliente - 1) + 1;
             cursorCliente.move(randomIndexCliente);
             int idCliente = cursorCliente.getInt(cursorCliente.getColumnIndex("IDusuario"));
             cursorCliente.close();
@@ -816,7 +819,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
             String queryServico = "SELECT IDservico, precoSugerido FROM Servicos";
             Cursor cursorServico = db.rawQuery(queryServico, null);
             int countServico = cursorServico.getCount();
-            int randomIndexServico = random.nextInt(countServico-1)+1;
+            int randomIndexServico = random.nextInt(countServico - 1) + 1;
             cursorServico.move(randomIndexServico);
             int idServico = cursorServico.getInt(cursorServico.getColumnIndex("IDservico"));
             double precoFinal = cursorServico.getDouble(cursorServico.getColumnIndex("precoSugerido"));
@@ -829,9 +832,9 @@ public class BancoDeDados extends SQLiteOpenHelper {
             String hora = gerarHoraAleatoria();
 
 
-            String status="";
+            String status = "";
             // Definir o status como
-            if (verificarDataMaiorQueDiaCorrente(data)){
+            if (verificarDataMaiorQueDiaCorrente(data)) {
                 status = "Agendado";
             } else {
                 status = "Realizado (pago)";
@@ -854,7 +857,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
     }
 
     //para DEBUG
-    private  String gerarDataAleatoria(String dataMinima, String dataMaxima) {
+    private String gerarDataAleatoria(String dataMinima, String dataMaxima) {
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -946,5 +949,63 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
 
         return atendimentosConcatenados;
+    }
+
+    public ArrayList<String> getFaturamentoProfissionaisNoMes(String mes) {
+        ArrayList<String> resultados = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String query = "SELECT Usuarios.nome, SUM(Atendimentos.precoFinal) " +
+                "FROM Atendimentos " +
+                "INNER JOIN Usuarios ON Atendimentos.IDusuario_profissional = Usuarios.IDusuario " +
+                "WHERE SUBSTR(Atendimentos.data, 7, 4) || '/' || SUBSTR(Atendimentos.data, 4, 2) = ? " +
+                "GROUP BY Usuarios.nome";
+
+        Cursor cursor = db.rawQuery(query, new String[]{mes});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String nomeUsuario = cursor.getString(0);
+                double somaPrecoFinal = cursor.getDouble(1);
+
+                String resultado = nomeUsuario + "::" + somaPrecoFinal;
+                resultados.add(resultado);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return resultados;
+    }
+
+    public ArrayList<String> getFaturamentoServicosNoMes(String mes) {
+        ArrayList<String> resultados = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String query = "SELECT Servicos.nome, SUM(Atendimentos.precoFinal) " +
+                "FROM Atendimentos " +
+                "INNER JOIN Servicos ON Atendimentos.IDservico = Servicos.IDservico " +
+                "WHERE SUBSTR(Atendimentos.data, 7, 4) || '/' || SUBSTR(Atendimentos.data, 4, 2) = ? " +
+                "GROUP BY Servicos.nome";
+
+        Cursor cursor = db.rawQuery(query, new String[]{mes});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String nomeServico = cursor.getString(0);
+                double somaPrecoFinal = cursor.getDouble(1);
+
+                String resultado = nomeServico + "::" + somaPrecoFinal;
+                resultados.add(resultado);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return resultados;
     }
 }
