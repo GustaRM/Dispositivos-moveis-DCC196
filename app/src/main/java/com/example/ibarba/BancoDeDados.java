@@ -501,7 +501,8 @@ public class BancoDeDados extends SQLiteOpenHelper {
                 "WHERE Atendimentos.IDusuario_cliente = ? " +
                 "AND Usuarios.IDusuario = Atendimentos.IDusuario_profissional " +
                 "AND Servicos.IDservico = Atendimentos.IDservico " +
-                "AND (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)) >= date('now')";
+                "AND (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)) >= date('now')" +
+                "ORDER BY (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)), Atendimentos.horaInicio ASC";
         Cursor cursor = db.rawQuery(comnadoSQL, new String[]{String.valueOf(IDusuario)});
 
         if (cursor.moveToFirst()) {
@@ -533,13 +534,16 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
 
         // Realizar a consulta nas tabelas Usuario, Servico e Atendimento
-        String comnadoSQL = "SELECT Atendimentos.IDatendimento, Servicos.nome AS nomeServico, Usuarios.nome AS nomeCliente, Atendimentos.data, Atendimentos.horaInicio, Atendimentos.precoFinal, Atendimentos.status " +
+        String comandoSQL = "SELECT Atendimentos.IDatendimento, Servicos.nome AS nomeServico, Usuarios.nome AS nomeCliente, Atendimentos.data, Atendimentos.horaInicio, Atendimentos.precoFinal, Atendimentos.status " +
                 "FROM Usuarios, Servicos, Atendimentos " +
                 "WHERE Atendimentos.IDusuario_profissional = ? " +
                 "AND Usuarios.IDusuario = Atendimentos.IDusuario_cliente " +
                 "AND Servicos.IDservico = Atendimentos.IDservico " +
-                "AND (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)) >= date('now')";
-        Cursor cursor = db.rawQuery(comnadoSQL, new String[]{String.valueOf(IDusuario)});
+                "AND (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)) >= date('now')" +
+                "ORDER BY (SUBSTR(Atendimentos.data, 7, 4) || '-' || SUBSTR(Atendimentos.data, 4, 2) || '-' || SUBSTR(Atendimentos.data, 1, 2)), Atendimentos.horaInicio ASC";
+
+
+        Cursor cursor = db.rawQuery(comandoSQL, new String[]{String.valueOf(IDusuario)});
 
         if (cursor.moveToFirst()) {
             do {
@@ -792,7 +796,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         Random random = new Random();
 
-        int numeroAtendimentos = 1000;
+        int numeroAtendimentos = 10*7*22*12*3;
 
         for (int i = 0; i < numeroAtendimentos; i++) {
 
@@ -1038,5 +1042,38 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
 
         return resultados;
+    }
+    public ArrayList<String> getFaturamentoMedioPorCliente(String ano) {
+        ArrayList<String> listaFaturamentoMedio = new ArrayList<>();
+
+        // Instancie o objeto SQLiteDatabase com a referência ao banco de dados
+        SQLiteDatabase db = getReadableDatabase();
+
+        // Realize a consulta SQL para obter o faturamento médio por cliente agrupado por mês
+        String query = "SELECT SUBSTR(data, 4, 2) AS mes, AVG(precoFinal) AS faturamentoMedio " +
+                "FROM Atendimentos " +
+                "WHERE status IN ('Realizado (pago)', 'Realizado (a pagar)') " +
+                "AND SUBSTR(data, 7, 4) = ? " +
+                "GROUP BY mes";
+
+        // Execute a consulta SQL usando o objeto SQLiteDatabase
+        Cursor cursor = db.rawQuery(query, new String[]{ano});
+
+        // Percorra o cursor para obter os resultados da consulta
+        while (cursor.moveToNext()) {
+            String mes = cursor.getString(cursor.getColumnIndex("mes"));
+            double faturamentoMedio = cursor.getDouble(cursor.getColumnIndex("faturamentoMedio"));
+
+            // Concatene o mês e o faturamento médio em uma string de resultado
+            String resultado = mes + "::" + faturamentoMedio;
+
+            // Adicione o resultado ao ArrayList
+            listaFaturamentoMedio.add(resultado);
+        }
+
+        cursor.close();
+        db.close();
+
+        return listaFaturamentoMedio;
     }
 }
