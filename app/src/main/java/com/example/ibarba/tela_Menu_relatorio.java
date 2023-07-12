@@ -61,8 +61,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Menu_gestor.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

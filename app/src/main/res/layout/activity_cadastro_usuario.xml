@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Cadastro_profissional">
+    tools:context=".tela_Cadastro_usuario">
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
-        android:text="Profissionais"
+        android:text="Clientes"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -66,9 +66,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Aqui será exibida a lista de serviços -->
             <ListView
-                android:id="@+id/listViewProfissionais"
+                android:id="@+id/listViewUsuarios"
                 android:layout_width="match_parent"
                 android:layout_height="500dp" />
 

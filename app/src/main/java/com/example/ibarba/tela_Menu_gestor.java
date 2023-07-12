@@ -15,7 +15,8 @@ public class tela_Menu_gestor extends AppCompatActivity {
         setContentView(R.layout.activity_menu_gestor);
 
         Button btnServicos = findViewById(R.id.btnHorarios);
-        Button btnProfissionais = findViewById(R.id.btnAtendimentos);
+        Button btnProfissionais = findViewById(R.id.btnProfissionais);
+        Button btnUsuarios = findViewById(R.id.btnUsuarios);
         Button btnRelatorios = findViewById(R.id.btnRelatorios);
 
         btnServicos.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +42,15 @@ public class tela_Menu_gestor extends AppCompatActivity {
             public void onClick(View v) {
                 // Redirecionar para o menu de relatorios.
                 Intent intent = new Intent(tela_Menu_gestor.this, tela_Menu_relatorio.class);
+                startActivity(intent);
+            }
+        });
+
+        btnUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Redirecionar para o menu de relatorios.
+                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_usuario.class);
                 startActivity(intent);
             }
         });

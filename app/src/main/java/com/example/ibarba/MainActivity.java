@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
 
@@ -109,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro
-                Intent intent = new Intent(MainActivity.this, tela_Cadastro_cliente.class);
+                Intent intent = new Intent(MainActivity.this, tela_Autocadastro_cliente.class);
                 startActivity(intent);
             }
         });

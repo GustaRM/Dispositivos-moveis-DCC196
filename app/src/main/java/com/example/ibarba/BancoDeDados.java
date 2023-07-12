@@ -280,6 +280,30 @@ public class BancoDeDados extends SQLiteOpenHelper {
         return listaProfissionais;
     }
 
+    public List<Usuario> getListaUsuarios() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM Usuarios ORDER BY nome";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int IDusuario = cursor.getInt(cursor.getColumnIndex("IDusuario"));
+                String nome = cursor.getString(cursor.getColumnIndex("nome"));
+                String telefone = cursor.getString(cursor.getColumnIndex("telefone"));
+                String email = cursor.getString(cursor.getColumnIndex("email"));
+                String tipoUsuario = cursor.getString(cursor.getColumnIndex("tipoUsuario"));
+                String senha = cursor.getString(cursor.getColumnIndex("senha"));
+
+                Usuario cliente = new Usuario(IDusuario, nome, telefone, email, tipoUsuario, senha);
+                listaUsuarios.add(cliente);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return listaUsuarios;
+    }
 
     //Usado apenas para debug
     public void exibirUsuarios() {
