@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //Instancia o banco de dados
         bancoDeDados = new BancoDeDados(this);
         db = bancoDeDados.getWritableDatabase();
-   //     bancoDeDados.apagaTabelas(db);
+     //   bancoDeDados.apagaTabelas(db);
     //    bancoDeDados.onCreate(db);
 
 
