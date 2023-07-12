@@ -342,8 +342,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 int IDagendaProfissional = cursor.getInt(cursor.getColumnIndex("IDagendaProfissional"));
-                int IDusuario_Profissional = cursor.getInt(cursor.getColumnIndex("IDusuario_profissional"));
-                String dataAgenda = cursor.getString(cursor.getColumnIndex("data"));
                 String hora = cursor.getString(cursor.getColumnIndex("hora"));
                 String status = cursor.getString(cursor.getColumnIndex("status"));
 
@@ -469,7 +467,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
 
         // Realizar a consulta nas tabelas Usuario, Servico e Atendimento
-        String comnadoSQL = "SELECT Servicos.nome AS nomeServico, Usuarios.nome AS nomeProfissional, Atendimentos.data, Atendimentos.horaInicio " +
+        String comnadoSQL = "SELECT Atendimentos.IDatendimento, Servicos.nome AS nomeServico, Usuarios.nome AS nomeProfissional, Atendimentos.data, Atendimentos.horaInicio, Atendimentos.status  " +
                 "FROM Usuarios, Servicos, Atendimentos " +
                 "WHERE Atendimentos.IDusuario_cliente = ? " +
                 "AND Usuarios.IDusuario = Atendimentos.IDusuario_profissional " +
@@ -480,13 +478,15 @@ public class BancoDeDados extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 // Obter os valores do cursor
+                int IDatendimento = cursor.getInt(cursor.getColumnIndex("IDatendimento"));
                 String nomeServico = cursor.getString(cursor.getColumnIndex("nomeServico"));
                 String nomeProfissional = cursor.getString(cursor.getColumnIndex("nomeProfissional"));
                 String data = cursor.getString(cursor.getColumnIndex("data"));
                 String horaInicio = cursor.getString(cursor.getColumnIndex("horaInicio"));
+                String status = cursor.getString(cursor.getColumnIndex("status"));
 
                 // Concatenar os campos e adicionar à lista
-                String campoConcatenado = nomeServico + " com " + nomeProfissional + " no dia " + data + " às " + horaInicio;
+                String campoConcatenado =  String.valueOf(IDatendimento) +"::" + nomeServico + " com " + nomeProfissional + " no dia " + data + " às " + horaInicio+ "("+status+")";
                 listaAgendamentosCliente.add(campoConcatenado);
             } while (cursor.moveToNext());
         }
@@ -503,7 +503,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
 
         // Realizar a consulta nas tabelas Usuario, Servico e Atendimento
-        String comnadoSQL = "SELECT Servicos.nome AS nomeServico, Usuarios.nome AS nomeCliente, Atendimentos.data, Atendimentos.horaInicio " +
+        String comnadoSQL = "SELECT Atendimentos.IDatendimento, Servicos.nome AS nomeServico, Usuarios.nome AS nomeCliente, Atendimentos.data, Atendimentos.horaInicio, Atendimentos.precoFinal, Atendimentos.status " +
                 "FROM Usuarios, Servicos, Atendimentos " +
                 "WHERE Atendimentos.IDusuario_profissional = ? " +
                 "AND Usuarios.IDusuario = Atendimentos.IDusuario_cliente " +
@@ -514,13 +514,16 @@ public class BancoDeDados extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 // Obter os valores do cursor
+                int IDatendimento = cursor.getInt(cursor.getColumnIndex("IDatendimento"));
                 String nomeServico = cursor.getString(cursor.getColumnIndex("nomeServico"));
                 String nomeCliente = cursor.getString(cursor.getColumnIndex("nomeCliente"));
                 String data = cursor.getString(cursor.getColumnIndex("data"));
                 String horaInicio = cursor.getString(cursor.getColumnIndex("horaInicio"));
+                Double precoFinal = cursor.getDouble(cursor.getColumnIndex("precoFinal"));
+                String status = cursor.getString(cursor.getColumnIndex("status"));
 
                 // Concatenar os campos e adicionar à lista
-                String campoConcatenado = nomeServico + " para " + nomeCliente + " no dia " + data + " às " + horaInicio;
+                String campoConcatenado = String.valueOf(IDatendimento) +"::" + String.valueOf(precoFinal)+"::" + nomeServico + " para " + nomeCliente + " no dia " + data + " às " + horaInicio+"("+status+")";
                 listaAgendamentosCliente.add(campoConcatenado);
             } while (cursor.moveToNext());
         }
@@ -678,6 +681,32 @@ public class BancoDeDados extends SQLiteOpenHelper {
         return nomesPrecosServicos;
     }
 
+    public void atualizarAtendimento(int IDatendimento, double precoFinal, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("precoFinal", precoFinal);
+        values.put("status", status);
+
+        String whereClause = "IDatendimento = ?";
+        String[] whereArgs = {String.valueOf(IDatendimento)};
+
+        db.update("Atendimentos", values, whereClause, whereArgs);
+
+        db.close();
+    }
+    public void atualizarAtendimento(int IDatendimento, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("status", status);
+
+        String whereClause = "IDatendimento = ?";
+        String[] whereArgs = {String.valueOf(IDatendimento)};
+
+        db.update("Atendimentos", values, whereClause, whereArgs);
+
+        db.close();
+    }
+
 }
-
-

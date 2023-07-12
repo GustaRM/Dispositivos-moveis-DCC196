@@ -13,6 +13,9 @@
         android:theme="@style/Theme.IBarba"
         tools:targetApi="31">
         <activity
+            android:name=".tela_Atendimento_profissional"
+            android:exported="false" />
+        <activity
             android:name=".tela_Agendamentos_profissional"
             android:exported="false" />
         <activity
@@ -44,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".tela_Cadastro_servico_editar"
-            android:exported="false" />
-        <activity
-            android:name=".Em_construcao"
             android:exported="false" />
         <activity
             android:name=".tela_Cadastro_servico"

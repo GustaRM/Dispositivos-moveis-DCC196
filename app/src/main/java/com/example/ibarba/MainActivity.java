@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         bancoDeDados = new BancoDeDados(this);
         db = bancoDeDados.getWritableDatabase();
       //  bancoDeDados.apagaTabelas(db);
-      //  bancoDeDados.onCreate(db);
+       // bancoDeDados.onCreate(db);
 
 
         if (bancoDeDados.isTabelaVazia("Usuarios")) {

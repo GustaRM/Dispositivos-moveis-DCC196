@@ -32,7 +32,7 @@ public class tela_Agendar_cliente extends AppCompatActivity {
 
         spinnerServico = findViewById(R.id.spinnerServico);
         spinnerProfissional = findViewById(R.id.spinnerProfissional);
-        spinnerData = findViewById(R.id.spinnerData);
+        spinnerData = findViewById(R.id.spinnerStatusAtendimento);
         spinnerHorario = findViewById(R.id.spinnerHorario);
         btnConcluir = findViewById(R.id.btnConcluir);
 

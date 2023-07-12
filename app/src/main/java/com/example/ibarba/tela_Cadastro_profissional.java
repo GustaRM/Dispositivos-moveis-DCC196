@@ -35,10 +35,10 @@ public class tela_Cadastro_profissional extends AppCompatActivity {
         // Configurar o clique em um item da lista
         listViewProfissionais.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 // Abrir a activity de edição do profissional
                 Intent intent = new Intent(tela_Cadastro_profissional.this, tela_Cadastro_profissional_editar.class);
-                intent.putExtra("IDusuario",profissionais.get(position).getIDusuario());
+                intent.putExtra("IDusuario",profissionais.get(i).getIDusuario());
                 startActivity(intent);
             }
         });

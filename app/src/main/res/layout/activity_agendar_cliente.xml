@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_AgendarServico_probema">
+    tools:context=".tela_Agendar_cliente">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtDescricaoAtendimento"
             android:layout_width="271dp"
             android:layout_height="24dp"
             android:layout_marginStart="27dp"
@@ -97,7 +97,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerData" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerStatusAtendimento" />
 
         <TextView
             android:id="@+id/textView3"
@@ -134,10 +134,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.34"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDescricaoAtendimento" />
 
         <Spinner
-            android:id="@+id/spinnerData"
+            android:id="@+id/spinnerStatusAtendimento"
             android:layout_width="294dp"
             android:layout_height="19dp"
             android:layout_marginStart="27dp"

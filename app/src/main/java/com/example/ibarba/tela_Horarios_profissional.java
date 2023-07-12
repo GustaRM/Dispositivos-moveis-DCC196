@@ -80,6 +80,7 @@ public class tela_Horarios_profissional extends AppCompatActivity {
             }
         });
 
+
         datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
