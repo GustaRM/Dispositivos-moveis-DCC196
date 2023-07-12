@@ -8,8 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BancoDeDados extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "iBarba.db";
@@ -733,4 +739,212 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
     }
 
+    public List<String> getListaMesesAtendimento() {
+        List<String> meses = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT DISTINCT (SUBSTR(Atendimentos.data, 7, 4) || '/' || SUBSTR(Atendimentos.data, 4, 2)) AS mes " +
+                "FROM Atendimentos " +
+                "ORDER BY mes DESC";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String mes = cursor.getString(cursor.getColumnIndex("mes"));
+                meses.add(mes);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return meses;
+    }
+
+    public List<String> getListaAnosAtendimento() {
+        List<String> meses = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT DISTINCT (SUBSTR(Atendimentos.data, 7, 4)) AS ano " +
+                "FROM Atendimentos " +
+                "ORDER BY ano DESC";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String mes = cursor.getString(cursor.getColumnIndex("ano"));
+                meses.add(mes);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return meses;
+    }
+    //para DEBUG
+    public void populaTabelaAtendimentos() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String dataMinima = "01/01/2021";
+        String dataMaxima = "31/07/2023";
+
+        Random random = new Random();
+
+        int numeroAtendimentos = 1000;
+
+        for (int i = 0; i < numeroAtendimentos; i++) {
+
+
+            // Obter ID de usuário profissional aleatório
+            String queryProfissional = "SELECT IDusuario FROM Usuarios WHERE tipoUsuario = 'profissional'";
+            Cursor cursorProfissional = db.rawQuery(queryProfissional, null);
+            int countProfissional = cursorProfissional.getCount();
+            int randomIndexProfissional = random.nextInt(countProfissional-1)+1;
+            cursorProfissional.move(randomIndexProfissional);
+            int idProfissional = cursorProfissional.getInt(cursorProfissional.getColumnIndex("IDusuario"));
+            cursorProfissional.close();
+
+            // Obter ID de usuário cliente aleatório
+            String queryCliente = "SELECT IDusuario FROM Usuarios WHERE tipoUsuario = 'cliente'";
+            Cursor cursorCliente = db.rawQuery(queryCliente, null);
+            int countCliente = cursorCliente.getCount();
+            int randomIndexCliente = random.nextInt(countCliente-1)+1;
+            cursorCliente.move(randomIndexCliente);
+            int idCliente = cursorCliente.getInt(cursorCliente.getColumnIndex("IDusuario"));
+            cursorCliente.close();
+
+            // Obter ID de serviço aleatório e o preço correspondente
+            String queryServico = "SELECT IDservico, precoSugerido FROM Servicos";
+            Cursor cursorServico = db.rawQuery(queryServico, null);
+            int countServico = cursorServico.getCount();
+            int randomIndexServico = random.nextInt(countServico-1)+1;
+            cursorServico.move(randomIndexServico);
+            int idServico = cursorServico.getInt(cursorServico.getColumnIndex("IDservico"));
+            double precoFinal = cursorServico.getDouble(cursorServico.getColumnIndex("precoSugerido"));
+            cursorServico.close();
+
+            // Gerar data aleatória
+            String data = gerarDataAleatoria(dataMinima, dataMaxima);
+
+            // Gerar hora aleatória
+            String hora = gerarHoraAleatoria();
+
+
+            String status="";
+            // Definir o status como
+            if (verificarDataMaiorQueDiaCorrente(data)){
+                status = "Agendado";
+            } else {
+                status = "Realizado (pago)";
+            }
+
+
+            ContentValues values = new ContentValues();
+            values.put("IDusuario_profissional", idProfissional);
+            values.put("IDusuario_cliente", idCliente);
+            values.put("IDservico", idServico);
+            values.put("precoFinal", precoFinal);
+            values.put("data", data);
+            values.put("horaInicio", hora);
+            values.put("status", status);
+
+            db.insert("Atendimentos", null, values);
+        }
+
+        db.close();
+    }
+
+    //para DEBUG
+    private  String gerarDataAleatoria(String dataMinima, String dataMaxima) {
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date dataMin, dataMax;
+
+        try {
+            dataMin = sdf.parse(dataMinima);
+            dataMax = sdf.parse(dataMaxima);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        long timestampMin = dataMin.getTime();
+        long timestampMax = dataMax.getTime();
+
+        long timestampAleatorio = ThreadLocalRandom.current().nextLong(timestampMin, timestampMax);
+        Date dataAleatoria = new Date(timestampAleatorio);
+
+        return sdf.format(dataAleatoria);
+
+    }
+
+    //para DEBUG
+    private String gerarHoraAleatoria() {
+
+        Random random = new Random();
+
+        // Definir intervalos de hora disponíveis
+        String[] intervaloManha = {"08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"};
+        String[] intervaloTarde = {"14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"};
+
+        // Escolher aleatoriamente entre os intervalos de manhã ou tarde
+        String[] intervaloSelecionado = random.nextBoolean() ? intervaloManha : intervaloTarde;
+
+        // Gerar um índice aleatório para escolher a hora dentro do intervalo selecionado
+        int indiceHora = random.nextInt(intervaloSelecionado.length);
+
+        return intervaloSelecionado[indiceHora];
+
+    }
+
+    //para DEBUG
+    public boolean verificarDataMaiorQueDiaCorrente(String data) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date dataAtual = new Date();
+
+        try {
+            Date dataComparacao = sdf.parse(data);
+            return dataComparacao.compareTo(dataAtual) > 0;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //para DEBUG
+    public List<String> getAtendimentosConcatenados() {
+        List<String> atendimentosConcatenados = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT IDatendimento, IDusuario_profissional, IDusuario_cliente, IDservico, precoFinal, data, horaInicio, status FROM Atendimentos";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            int IDatendimento = cursor.getInt(cursor.getColumnIndex("IDatendimento"));
+            int IDusuario_profissional = cursor.getInt(cursor.getColumnIndex("IDusuario_profissional"));
+            int IDusuario_cliente = cursor.getInt(cursor.getColumnIndex("IDusuario_cliente"));
+            int IDservico = cursor.getInt(cursor.getColumnIndex("IDservico"));
+            double precoFinal = cursor.getDouble(cursor.getColumnIndex("precoFinal"));
+            String data = cursor.getString(cursor.getColumnIndex("data"));
+            String horaInicio = cursor.getString(cursor.getColumnIndex("horaInicio"));
+            String status = cursor.getString(cursor.getColumnIndex("status"));
+
+        /*    String atendimentoConcatenado = "ID: " + IDatendimento + " - ID Profissional: " + IDusuario_profissional + " - ID Cliente: " + IDusuario_cliente +
+                    " - ID Serviço: " + IDservico + " - Preço Final: " + precoFinal + " - Data: " + data + " - Hora Início: " + horaInicio +
+                    " - Status: " + status;
+
+         */
+
+            String atendimentoConcatenado = "Preço Final: " + precoFinal + " - Data: " + data + " - Hora Início: " + horaInicio +
+                    " - Status: " + status;
+
+            atendimentosConcatenados.add(atendimentoConcatenado);
+        }
+
+        cursor.close();
+        db.close();
+
+        return atendimentosConcatenados;
+    }
 }

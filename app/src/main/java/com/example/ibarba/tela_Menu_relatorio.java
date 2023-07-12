@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class tela_Menu_relatorio extends AppCompatActivity {
+    private List<String> meses = new ArrayList<>();
+    private List<String> anos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,46 +24,79 @@ public class tela_Menu_relatorio extends AppCompatActivity {
         //Configura o spinner dos meses
         Spinner spinnerMes = findViewById(R.id.spinnerMes);
         // Cria uma lista com as opções do Spinner
-        List<String> meses = new ArrayList<>();
-        meses.add("01/2023");
-        meses.add("02/2023");
-        meses.add("03/2023");
-        meses.add("04/2023");
-        meses.add("05/2023");
+        meses = MainActivity.bancoDeDados.getListaMesesAtendimento();
 
         // Cria um ArrayAdapter para converter a lista em um adaptador para o Spinner
         ArrayAdapter<String> adapterMes = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, meses);
-
         // Define o layout do dropdown
         adapterMes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // Atribui o adaptador para o Spinner
         spinnerMes.setAdapter(adapterMes);
 
 
-        //Configura o spinner dos tipos de relatório
-        Spinner spinnerTipoRelatorio = findViewById(R.id.spinnerTipoRelatorio);
+        //Configura o spinner dos anos
+        Spinner spinnerAno = findViewById(R.id.spinnerAno);
         // Cria uma lista com as opções do Spinner
-        List<String> tiposRelatorios = new ArrayList<>();
-        tiposRelatorios.add("Por Serviço");
-        tiposRelatorios.add("Por Profissional");
-        tiposRelatorios.add("Por Cliente");
+        anos = MainActivity.bancoDeDados.getListaAnosAtendimento();
 
         // Cria um ArrayAdapter para converter a lista em um adaptador para o Spinner
-        ArrayAdapter<String> adapterTipoRelatorio = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tiposRelatorios);
-
+        ArrayAdapter<String> adapterAno = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, anos);
         // Define o layout do dropdown
-        adapterTipoRelatorio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        adapterAno.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Atribui o adaptador para o Spinner
-        spinnerTipoRelatorio.setAdapter(adapterTipoRelatorio);
+        spinnerAno.setAdapter(adapterAno);
+
 
         //Voltar para o menu inicial (Gestor)
-        Button btnVoltar = findViewById((R.id.btnSair));
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
+        Button btnConcluir = findViewById((R.id.btnConcluir));
+        btnConcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        //Relatório 1
+        Button btnRelatorio1 = findViewById((R.id.btnRelatorio1));
+        btnRelatorio1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
+
+        //Relatório 2
+        Button btnRelatorio2 = findViewById((R.id.btnRelatorio2));
+        btnRelatorio2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
+
+        //Relatório 3
+        Button btnRelatorio3 = findViewById((R.id.btnRelatorio3));
+        btnRelatorio3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
+
+        //Relatório 4
+        Button btnRelatorio4 = findViewById((R.id.btnRelatorio4));
+        btnRelatorio4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                intent.putExtra("mes", spinnerMes.getSelectedItem().toString());
+                startActivity(intent);
             }
         });
     }

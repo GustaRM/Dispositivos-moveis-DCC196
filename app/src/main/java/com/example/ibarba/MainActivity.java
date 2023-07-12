@@ -19,26 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static int IDusuario=-1;
 
-    // Cria uma lista para armazenar os usuários
- //   private static List<Usuario> usuarios = new ArrayList<>();
- //   private static List<Servico> servicos = new ArrayList<>();
-
-  //  public static List<Usuario> getUsuarios() {
-   //     return usuarios;
-    //}
-
-//    public static List<Servico> getServicos() {
- //       return servicos;
- //   }
-
-  //  public static void adicionarUsuario(Usuario usuario) {
-  //      usuarios.add(usuario);
-  //  }
-
-//    public static void adicionarServico(Servico servico) {
- //       servicos.add(servico);
- //   }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         //Instancia o banco de dados
         bancoDeDados = new BancoDeDados(this);
         db = bancoDeDados.getWritableDatabase();
-      //  bancoDeDados.apagaTabelas(db);
-       // bancoDeDados.onCreate(db);
+//        bancoDeDados.apagaTabelas(db);
+//        bancoDeDados.onCreate(db);
 
 
         if (bancoDeDados.isTabelaVazia("Usuarios")) {
@@ -59,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (bancoDeDados.isTabelaVazia("Servicos")) {
             bancoDeDados.popularServicos();
+        }
+        if (bancoDeDados.isTabelaVazia("Atendimentos")) {
+            bancoDeDados.populaTabelaAtendimentos();
         }
 
 
@@ -112,21 +95,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-/*    public static List<Usuario> getProfissionais() {
-
-        List<Usuario> profissionais = new ArrayList<>();
-
-        for (Usuario usuario : usuarios) {
-            if (usuario.getTipoUsuario().equals("profissional")) {
-                profissionais.add(usuario);
-            }
-        }
-        return profissionais;
-    }
-
- */
 
     protected void onDestroy() {
         super.onDestroy();

@@ -58,7 +58,7 @@
         android:ems="10"
         android:hint="Digite seu email"
         android:inputType="text|textEmailAddress|textAutoComplete"
-        android:text="c"
+        android:text="g"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
