@@ -11,31 +11,34 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class tela_Cadastro_usuario extends AppCompatActivity {
+public class Tela_Cadastro_profissional extends AppCompatActivity {
 
-    private ListView listViewUsuarios;
-    private List<Usuario> usuarios;
+    private ListView listViewProfissionais;
+    private List<Usuario> profissionais;
 
     private UsuarioAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_usuario);
+        setContentView(R.layout.activity_cadastro_profissional);
+
+        // Obter a lista de profissionais
+ //       profissionais = MainActivity.bancoDeDados.getListaProfissionais();
 
         // Configurar o ListView
-        listViewUsuarios = findViewById(R.id.listViewUsuarios);
+        listViewProfissionais = findViewById(R.id.listViewProfissionais);
 //        adapter = new UsuarioAdapter(this, profissionais);
 //        listViewProfissionais.setAdapter(adapter);
 
 
         // Configurar o clique em um item da lista
-        listViewUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewProfissionais.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 // Abrir a activity de edição do profissional
-                Intent intent = new Intent(tela_Cadastro_usuario.this, tela_Cadastro_usuario_editar.class);
-                intent.putExtra("IDusuario",usuarios.get(i).getIDusuario());
+                Intent intent = new Intent(Tela_Cadastro_profissional.this, Tela_Cadastro_profissional_editar.class);
+                intent.putExtra("IDusuario",profissionais.get(i).getIDusuario());
                 startActivity(intent);
             }
         });
@@ -45,8 +48,8 @@ public class tela_Cadastro_usuario extends AppCompatActivity {
         novoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Abrir a activity de cadastro de novo usuário
-                Intent intent = new Intent(tela_Cadastro_usuario.this, tela_Cadastro_usuario_novo.class);
+                // Abrir a activity de cadastro de novo profissional
+                Intent intent = new Intent(Tela_Cadastro_profissional.this, Tela_Cadastro_profissional_novo.class);
                 startActivity(intent);
             }
         });
@@ -56,9 +59,9 @@ public class tela_Cadastro_usuario extends AppCompatActivity {
         super.onResume();
 
         // Atualiza a lista de profissionais (se necessário)
-        usuarios = MainActivity.bancoDeDados.getListaUsuarios();
-        adapter = new UsuarioAdapter(this, usuarios);
-        listViewUsuarios.setAdapter(adapter);
+        profissionais =MainActivity.bancoDeDados.getListaProfissionais();
+        adapter = new UsuarioAdapter(this, profissionais);
+        listViewProfissionais.setAdapter(adapter);
 
         // Notifique o adaptador de mudanças nos dados
         adapter.notifyDataSetChanged();

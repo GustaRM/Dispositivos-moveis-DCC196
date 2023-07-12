@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class tela_Cadastro_servico_editar extends AppCompatActivity {
+public class Tela_Cadastro_servico_editar extends AppCompatActivity {
 
     private EditText txtNome;
     private EditText txtDescricao;
@@ -75,7 +75,7 @@ public class tela_Cadastro_servico_editar extends AppCompatActivity {
                 servico.setDuracao(duracao);
 
                 MainActivity.bancoDeDados.atualizarServico(servico);
-                Toast.makeText(tela_Cadastro_servico_editar.this, "Serviço alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Cadastro_servico_editar.this, "Serviço alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();
@@ -90,7 +90,7 @@ public class tela_Cadastro_servico_editar extends AppCompatActivity {
                 // Obter os valores dos campos
                 MainActivity.bancoDeDados.removerServicoByID(IDservico);
 
-                Toast.makeText(tela_Cadastro_servico_editar.this, "Serviço excluído com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Cadastro_servico_editar.this, "Serviço excluído com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();

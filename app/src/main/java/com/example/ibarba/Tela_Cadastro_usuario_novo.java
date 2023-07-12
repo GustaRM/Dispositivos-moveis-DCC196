@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class tela_Cadastro_usuario_novo extends AppCompatActivity {
+public class Tela_Cadastro_usuario_novo extends AppCompatActivity {
 
     private EditText txtNome;
     private EditText txtTelefone;
@@ -51,7 +51,7 @@ public class tela_Cadastro_usuario_novo extends AppCompatActivity {
                 // Adicionar o novo usuario à lista existente na MainActivity
                 MainActivity.bancoDeDados.adicionaUsuario(novoUsuario);
 
-                Toast.makeText(tela_Cadastro_usuario_novo.this, "Usuário criado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Cadastro_usuario_novo.this, "Usuário criado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();

@@ -18,9 +18,8 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class tela_Relatorio_3 extends AppCompatActivity {
+public class Tela_Relatorio_3 extends AppCompatActivity {
 
     private BarChart barChart;
 

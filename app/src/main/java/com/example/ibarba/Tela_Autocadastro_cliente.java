@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class tela_Autocadastro_cliente extends AppCompatActivity {
+public class Tela_Autocadastro_cliente extends AppCompatActivity {
 
     private EditText txtNome;
     private EditText txtTelefone;
@@ -51,13 +51,13 @@ public class tela_Autocadastro_cliente extends AppCompatActivity {
                     MainActivity.bancoDeDados.adicionaUsuario(novoUsuario);
 
                     // Exibir mensagem de sucesso
-                    Toast.makeText(tela_Autocadastro_cliente.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Tela_Autocadastro_cliente.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
 
                     // Encerrar a tela de cadastro e voltar para a MainActivity
                     finish();
                 } else {
                     // Senha e confirmação não correspondem, exibir mensagem de erro
-                    Toast.makeText(tela_Autocadastro_cliente.this, "A senha e a confirmação não correspondem.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Tela_Autocadastro_cliente.this, "A senha e a confirmação não correspondem.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

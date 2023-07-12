@@ -796,7 +796,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         Random random = new Random();
 
-        int numeroAtendimentos = 10000;
+        int numeroAtendimentos = 5000;
 
         for (int i = 0; i < numeroAtendimentos; i++) {
 

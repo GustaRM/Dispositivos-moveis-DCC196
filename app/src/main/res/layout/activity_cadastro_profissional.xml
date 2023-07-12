@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Cadastro_profissional">
+    tools:context=".Tela_Cadastro_profissional">
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -80,7 +80,11 @@
         android:id="@+id/btnNovo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Novo"
+        android:textSize="16sp"
+        app:backgroundTint="#3351BC"
+        app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

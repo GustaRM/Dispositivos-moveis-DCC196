@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tela_Agendar_cliente extends AppCompatActivity {
+public class Tela_Agendar_cliente extends AppCompatActivity {
 
     private Spinner spinnerServico;
     private Spinner spinnerProfissional;
@@ -49,7 +49,7 @@ public class tela_Agendar_cliente extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
+                Toast.makeText(Tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
             }
 
         });
@@ -66,7 +66,7 @@ public class tela_Agendar_cliente extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
+                Toast.makeText(Tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
             }
 
         });
@@ -82,7 +82,7 @@ public class tela_Agendar_cliente extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
+                Toast.makeText(Tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
             }
 
         });
@@ -96,7 +96,7 @@ public class tela_Agendar_cliente extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
+                Toast.makeText(Tela_Agendar_cliente.this,"Nenhum selecionado",Toast.LENGTH_LONG).show();
             }
 
         });
@@ -107,10 +107,10 @@ public class tela_Agendar_cliente extends AppCompatActivity {
             public void onClick(View v) {
                 if (spinnerData.getAdapter().getCount() > 0 && spinnerHorario.getAdapter().getCount() >0 ) {
                     salvaAgendamento();
-                    Toast.makeText(tela_Agendar_cliente.this,"Agendamento salvo com sucesso.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Tela_Agendar_cliente.this,"Agendamento salvo com sucesso.",Toast.LENGTH_LONG).show();
                     finish();
                 }else {
-                    Toast.makeText(tela_Agendar_cliente.this,"Escolha a data e o horário.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Tela_Agendar_cliente.this,"Escolha a data e o horário.",Toast.LENGTH_LONG).show();
                 }
             }
         });

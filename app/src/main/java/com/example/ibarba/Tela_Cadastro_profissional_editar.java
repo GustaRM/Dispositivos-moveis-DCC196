@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class tela_Cadastro_profissional_editar extends AppCompatActivity {
+public class Tela_Cadastro_profissional_editar extends AppCompatActivity {
 
     private EditText txtNome;
     private EditText txtTelefone;
@@ -71,7 +71,7 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
                 profissional.setTipoUsuario(txtTipoUsuario.getText().toString());
                 profissional.setSenha(txtSenha.getText().toString());
                 MainActivity.bancoDeDados.atualizarUsuario(profissional);
-                Toast.makeText(tela_Cadastro_profissional_editar.this, "Profissional alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Cadastro_profissional_editar.this, "Profissional alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição e voltar para a MainActivity
                 finish();
@@ -86,7 +86,7 @@ public class tela_Cadastro_profissional_editar extends AppCompatActivity {
                 // Obter os valores dos campos
                 MainActivity.bancoDeDados.removerUsuarioByID(IDusuario);
 
-                Toast.makeText(tela_Cadastro_profissional_editar.this, "Profissional excluído com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Cadastro_profissional_editar.this, "Profissional excluído com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar a tela de edição
                 finish();

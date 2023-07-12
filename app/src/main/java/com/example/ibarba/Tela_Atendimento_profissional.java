@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class tela_Atendimento_profissional extends AppCompatActivity {
+public class Tela_Atendimento_profissional extends AppCompatActivity {
 
     private int IDAtendimento;
     private Double precoFinal;
@@ -50,7 +50,7 @@ public class tela_Atendimento_profissional extends AppCompatActivity {
                 String status = spinnerStatusAtendimento.getSelectedItem().toString();
 
                 MainActivity.bancoDeDados.atualizarAtendimento(IDAtendimento, precoFinal, status);
-                Toast.makeText(tela_Atendimento_profissional.this, "Atendimento concluído com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_Atendimento_profissional.this, "Atendimento concluído com sucesso!", Toast.LENGTH_SHORT).show();
 
                 // Encerrar
                 finish();

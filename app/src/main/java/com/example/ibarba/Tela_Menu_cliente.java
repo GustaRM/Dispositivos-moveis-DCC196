@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class tela_Menu_cliente extends AppCompatActivity {
+public class Tela_Menu_cliente extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_Agendamentos_cliente.class);
+                Intent intent = new Intent(Tela_Menu_cliente.this, Tela_Agendamentos_cliente.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_Agendar_cliente.class);
+                Intent intent = new Intent(Tela_Menu_cliente.this, Tela_Agendar_cliente.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +40,7 @@ public class tela_Menu_cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_cliente.this, tela_Precos_cliente.class);
+                Intent intent = new Intent(Tela_Menu_cliente.this, Tela_Precos_cliente.class);
                 startActivity(intent);
             }
         });

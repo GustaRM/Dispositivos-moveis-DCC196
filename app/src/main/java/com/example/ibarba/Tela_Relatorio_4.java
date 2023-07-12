@@ -7,22 +7,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class tela_Relatorio_4 extends AppCompatActivity {
+public class Tela_Relatorio_4 extends AppCompatActivity {
 
     private LineChart lineChart;
 
@@ -56,13 +52,13 @@ public class tela_Relatorio_4 extends AppCompatActivity {
 
         lineChart = findViewById(R.id.lineChart);
         // Configurar o título do gráfico
-        Description chartDescription = new Description();
-        chartDescription.setText("Faturamento mensal médio por cliente");
-        chartDescription.setTextSize(16f);
-        chartDescription.setPosition(1300, 50); // Posiciona o título acima do gráfico
+      //  Description chartDescription = new Description();
+      //  chartDescription.setText("Faturamento mensal médio por cliente");
+     //   chartDescription.setTextSize(16f);
+      //  chartDescription.setPosition(1300, 50); // Posiciona o título acima do gráfico
 
 
-        lineChart.setDescription(chartDescription);
+      //  lineChart.setDescription(chartDescription);
 
 
         LineDataSet dataSetFaturamento = createDataSet(entriesFaturamento, "Faturamento", Color.BLUE);

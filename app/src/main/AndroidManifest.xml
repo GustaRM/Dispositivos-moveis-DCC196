@@ -13,79 +13,76 @@
         android:theme="@style/Theme.IBarba"
         tools:targetApi="31">
         <activity
-            android:name=".tela_Relatorio_4"
+            android:name=".Tela_Relatorio_4"
             android:exported="false" />
         <activity
-            android:name=".tela_Relatorio_3"
+            android:name=".Tela_Relatorio_3"
             android:exported="false" />
         <activity
-            android:name=".tela_Relatorio_2"
+            android:name=".Tela_Relatorio_2"
             android:exported="false" />
         <activity
-            android:name=".tela_Relatorio_1"
+            android:name=".Tela_Relatorio_1"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_usuario_novo"
+            android:name=".Tela_Cadastro_usuario_novo"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_usuario_editar"
+            android:name=".Tela_Cadastro_usuario_editar"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_usuario"
+            android:name=".Tela_Cadastro_usuario"
             android:exported="false" />
         <activity
-            android:name=".tela_Atendimento_profissional"
+            android:name=".Tela_Atendimento_profissional"
             android:exported="false" />
         <activity
-            android:name=".tela_Agendamentos_profissional"
+            android:name=".Tela_Agendamentos_profissional"
             android:exported="false" />
         <activity
-            android:name=".tela_Precos_cliente"
+            android:name=".Tela_Precos_cliente"
             android:exported="false" />
         <activity
-            android:name=".tela_Agendar_cliente"
+            android:name=".Tela_Agendar_cliente"
             android:exported="false" />
         <activity
-            android:name=".tela_Horarios_profissional"
+            android:name=".Tela_Horarios_profissional"
             android:exported="false" />
         <activity
-            android:name=".tela_Menu_profissional"
+            android:name=".Tela_Menu_profissional"
             android:exported="false" />
         <activity
-            android:name=".tela_Menu_relatorio"
+            android:name=".Tela_Menu_relatorio"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_profissional_novo"
+            android:name=".Tela_Cadastro_profissional_novo"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_profissional_editar"
+            android:name=".Tela_Cadastro_profissional_editar"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_profissional"
+            android:name=".Tela_Cadastro_profissional"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_servico_novo"
+            android:name=".Tela_Cadastro_servico_novo"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_servico_editar"
+            android:name=".Tela_Cadastro_servico_editar"
             android:exported="false" />
         <activity
-            android:name=".tela_Cadastro_servico"
+            android:name=".Tela_Cadastro_servico"
             android:exported="false" />
         <activity
-            android:name=".tela_Autocadastro_cliente"
+            android:name=".Tela_Autocadastro_cliente"
             android:exported="false" />
         <activity
-            android:name=".tela_Menu_gestor"
+            android:name=".Tela_Menu_gestor"
             android:exported="false" />
         <activity
-            android:name=".tela_Cortes"
+            android:name=".Tela_Agendamentos_cliente"
             android:exported="false" />
         <activity
-            android:name=".tela_Agendamentos_cliente"
-            android:exported="false" />
-        <activity
-            android:name=".tela_Menu_cliente"
+            android:name=".Tela_Menu_cliente"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

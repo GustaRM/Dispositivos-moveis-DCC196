@@ -14,9 +14,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class tela_Horarios_profissional extends AppCompatActivity {
+public class Tela_Horarios_profissional extends AppCompatActivity {
 
     ArrayList<Spinner> listaStatus = new ArrayList<>();
     ArrayList<TextView> listaHorarios = new ArrayList<>();

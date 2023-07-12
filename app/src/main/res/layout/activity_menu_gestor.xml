@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Menu_gestor">
+    tools:context=".Tela_Menu_gestor">
 
     <TextView
         android:id="@+id/txtTituloMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:background="#000000"
         android:fontFamily="@font/archivo_black"
         android:text="Menu"
@@ -26,7 +26,7 @@
         android:id="@+id/imageView4"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:rotation="-174"
         android:rotationY="170"
         android:src="@drawable/pngwing_com"
@@ -38,7 +38,7 @@
         android:id="@+id/imageView"
         android:layout_width="58dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:rotation="-170"
         android:src="@drawable/pngwing_com"
         app:layout_constraintEnd_toStartOf="@+id/txtTituloMenu"
@@ -79,14 +79,14 @@
         android:id="@+id/btnSair"
         android:layout_width="87dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="60dp"
         android:fontFamily="@font/archivo_black"
         android:text="Sair"
         android:textSize="16sp"
         app:backgroundTint="#3351BC"
         app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_Atendimento_profissional">
+    tools:context=".Tela_Atendimento_profissional">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
-        tools:context=".tela_Cadastro_profissional_editar"
+        tools:context=".Tela_Cadastro_profissional_editar"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="-30dp">
 
         <TextView
             android:id="@+id/txtTitulo"
-            android:layout_width="186dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="#000000"
@@ -80,7 +80,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Desconto(%):" />
+                android:text="Desconto(%):"
+                android:textColor="#FDFBFB" />
 
             <EditText
                 android:id="@+id/txtDesconto"
@@ -89,7 +90,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:text="10" />
+                android:text="10"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <TextView
@@ -107,7 +109,11 @@
             android:id="@+id/btnConcluir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
             android:text="Concluir"
+            android:textSize="16sp"
+            app:backgroundTint="#3351BC"
+            app:cornerRadius="10px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

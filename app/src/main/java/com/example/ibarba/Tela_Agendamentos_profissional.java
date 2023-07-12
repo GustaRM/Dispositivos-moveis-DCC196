@@ -9,12 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class tela_Agendamentos_profissional extends AppCompatActivity {
+public class Tela_Agendamentos_profissional extends AppCompatActivity {
 
     private ArrayList<String> listaAgendamentosProfissional= new ArrayList<>();;
     private ArrayList<Integer> listaIDAtendimento = new ArrayList<>();
@@ -46,7 +44,7 @@ public class tela_Agendamentos_profissional extends AppCompatActivity {
 
                 //Toast.makeText(getApplicationContext(), "Agendamentos: "+agendamentos.get(i).toString(), Toast.LENGTH_SHORT).show();
                 // Abrir a activity para conclusão do agendamento
-                Intent intent = new Intent(tela_Agendamentos_profissional.this, tela_Atendimento_profissional.class);
+                Intent intent = new Intent(Tela_Agendamentos_profissional.this, Tela_Atendimento_profissional.class);
                 intent.putExtra("IDAtendimento",listaIDAtendimento.get(i).intValue());
                 intent.putExtra("precoFinal",listaPrecoFinal.get(i).doubleValue());
                 intent.putExtra("descricaoAtendimento",listaAgendamentosProfissional.get(i));

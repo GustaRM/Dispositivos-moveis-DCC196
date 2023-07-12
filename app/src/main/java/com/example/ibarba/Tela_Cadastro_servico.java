@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class tela_Cadastro_servico extends AppCompatActivity {
+public class Tela_Cadastro_servico extends AppCompatActivity {
 
     private ListView listViewServicos;
     private List<Servico> servicos;
@@ -36,7 +36,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Abrir a activity de edição do serviço
-                Intent intent = new Intent(tela_Cadastro_servico.this, tela_Cadastro_servico_editar.class);
+                Intent intent = new Intent(Tela_Cadastro_servico.this, Tela_Cadastro_servico_editar.class);
                 intent.putExtra("IDservico", servicos.get(position).getIDservico());
                 startActivity(intent);
             }
@@ -48,7 +48,7 @@ public class tela_Cadastro_servico extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Abrir a activity de cadastro de novo serviço
-                Intent intent = new Intent(tela_Cadastro_servico.this, tela_Cadastro_servico_novo.class);
+                Intent intent = new Intent(Tela_Cadastro_servico.this, Tela_Cadastro_servico_novo.class);
                 startActivity(intent);
             }
         });

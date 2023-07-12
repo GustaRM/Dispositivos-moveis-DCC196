@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Agendamentos_cliente">
+    tools:context=".Tela_Agendamentos_cliente">
 
     <ListView
         android:id="@+id/listaPrecos"
@@ -63,6 +63,7 @@
         android:id="@+id/btnSair"
         android:layout_width="127dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
         android:fontFamily="@font/archivo_black"
         android:text="Voltar"
         android:textSize="16sp"
@@ -70,7 +71,6 @@
         app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

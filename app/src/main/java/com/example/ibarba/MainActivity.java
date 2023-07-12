@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         //Instancia o banco de dados
         bancoDeDados = new BancoDeDados(this);
         db = bancoDeDados.getWritableDatabase();
-     //   bancoDeDados.apagaTabelas(db);
-    //    bancoDeDados.onCreate(db);
+       // bancoDeDados.apagaTabelas(db);
+       // bancoDeDados.onCreate(db);
 
 
         if (bancoDeDados.isTabelaVazia("Usuarios")) {
@@ -65,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
                     // Usuário válido, redirecione para a tela apropriada com base no tipo de usuário
                     if (usuario.getTipoUsuario().equals("cliente")) {
                         // Redirecionar para a tela "Bem vindo cliente"
-                        Intent intent = new Intent(MainActivity.this, tela_Menu_cliente.class);
+                        Intent intent = new Intent(MainActivity.this, Tela_Menu_cliente.class);
                         startActivity(intent);
                     } else if (usuario.getTipoUsuario().equals("profissional")) {
                         // Redirecionar para a tela "Bem vindo profissional"
-                        Intent intent = new Intent(MainActivity.this, tela_Menu_profissional.class);
+                        Intent intent = new Intent(MainActivity.this, Tela_Menu_profissional.class);
                         startActivity(intent);
                     } else if (usuario.getTipoUsuario().equals("gestor")) {
                         // Redirecionar para a tela "Bem vindo gestor"
-                        Intent intent = new Intent(MainActivity.this, tela_Menu_gestor.class);
+                        Intent intent = new Intent(MainActivity.this, Tela_Menu_gestor.class);
                         startActivity(intent);
                     }
                 } else {
@@ -83,13 +83,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar um clique no texto de "Cadastre-se"
-
         txtCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro
-                Intent intent = new Intent(MainActivity.this, tela_Autocadastro_cliente.class);
+                Intent intent = new Intent(MainActivity.this, Tela_Autocadastro_cliente.class);
                 startActivity(intent);
             }
         });

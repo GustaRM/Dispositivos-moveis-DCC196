@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class tela_Menu_gestor extends AppCompatActivity {
+public class Tela_Menu_gestor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class tela_Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de serviços.
-                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_servico.class);
+                Intent intent = new Intent(Tela_Menu_gestor.this, Tela_Cadastro_servico.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +32,7 @@ public class tela_Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para a tela de cadastro de profissionais.
-                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_profissional.class);
+                Intent intent = new Intent(Tela_Menu_gestor.this, Tela_Cadastro_profissional.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class tela_Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para o menu de relatorios.
-                Intent intent = new Intent(tela_Menu_gestor.this, tela_Menu_relatorio.class);
+                Intent intent = new Intent(Tela_Menu_gestor.this, Tela_Menu_relatorio.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class tela_Menu_gestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirecionar para o menu de relatorios.
-                Intent intent = new Intent(tela_Menu_gestor.this, tela_Cadastro_usuario.class);
+                Intent intent = new Intent(Tela_Menu_gestor.this, Tela_Cadastro_usuario.class);
                 startActivity(intent);
             }
         });

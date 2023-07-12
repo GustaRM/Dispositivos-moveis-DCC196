@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".tela_Cadastro_usuario">
+    tools:context=".Tela_Cadastro_usuario">
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -77,8 +77,12 @@
 
     <Button
         android:id="@+id/btnNovo"
+        android:textSize="16sp"
+        app:backgroundTint="#3351BC"
+        app:cornerRadius="10px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="Novo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
