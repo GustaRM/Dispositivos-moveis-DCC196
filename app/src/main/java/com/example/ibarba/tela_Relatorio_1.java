@@ -29,7 +29,7 @@ public class tela_Relatorio_1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio1);
 
-                Intent intent = getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
             mes = intent.getStringExtra("mes");
         }

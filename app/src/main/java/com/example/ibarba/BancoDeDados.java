@@ -1008,4 +1008,35 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         return resultados;
     }
+    public ArrayList<String> getFaturamentoELucroPorMes(String ano) {
+        ArrayList<String> resultados = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String query = "SELECT SUBSTR(Atendimentos.data, 4, 2) AS mes, " +
+                "SUM(Atendimentos.precoFinal) AS faturamento, " +
+                "SUM(Atendimentos.precoFinal - Servicos.custo) AS lucro " +
+                "FROM Atendimentos " +
+                "INNER JOIN Servicos ON Atendimentos.IDservico = Servicos.IDservico " +
+                "WHERE SUBSTR(Atendimentos.data, 7, 4) = ? " +
+                "GROUP BY SUBSTR(Atendimentos.data, 4, 2)";
+
+        Cursor cursor = db.rawQuery(query, new String[] { ano });
+
+        if (cursor.moveToFirst()) {
+            do {
+                String mes = cursor.getString(cursor.getColumnIndex("mes"));
+                double faturamento = cursor.getDouble(cursor.getColumnIndex("faturamento"));
+                double lucro = cursor.getDouble(cursor.getColumnIndex("lucro"));
+
+                String resultado = mes + "::" + faturamento + "::" + lucro;
+                resultados.add(resultado);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return resultados;
+    }
 }

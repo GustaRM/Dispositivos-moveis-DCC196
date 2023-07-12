@@ -83,7 +83,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
         btnRelatorio3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_3.class);
                 intent.putExtra("ano", spinnerAno.getSelectedItem().toString());
                 startActivity(intent);
             }
@@ -94,7 +94,7 @@ public class tela_Menu_relatorio extends AppCompatActivity {
         btnRelatorio4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_1.class);
+                Intent intent = new Intent(tela_Menu_relatorio.this, tela_Relatorio_4.class);
                 intent.putExtra("ano", spinnerAno.getSelectedItem().toString());
                 startActivity(intent);
             }
